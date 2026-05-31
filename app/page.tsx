@@ -1,3 +1,4 @@
+import ScrollToTop from "@/components/ScrollToTop";
 import SiteHeader from "@/components/SiteHeader";
 import HeroText from "@/components/Hero";
 import ApplyInvite from "@/components/ApplyInvite";
@@ -16,6 +17,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 export default function Home() {
   return (
     <>
+      <ScrollToTop />
       <SiteHeader />
 
       {/* 1. Hook — the headline question */}
