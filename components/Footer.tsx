@@ -3,23 +3,14 @@ export default function Footer() {
     <footer className="bg-[#111111] px-6 md:px-16 pt-24 pb-12">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
 
-        {/* Large centered logo */}
+        {/* Large centered brand logo */}
         <div className="text-center mb-12">
-          <p
-            className="font-bold text-white uppercase tracking-tight leading-none"
-            style={{ fontSize: "clamp(40px, 8vw, 96px)" }}
-          >
-            Forge
-          </p>
-          <p
-            className="font-bold uppercase tracking-[0.15em] mt-1"
-            style={{
-              fontSize: "clamp(14px, 2vw, 22px)",
-              color: "#B69556",
-            }}
-          >
-            by ForFond
-          </p>
+          <img
+            src="/forge-logo.svg"
+            alt="Forge by ForFond"
+            className="mx-auto w-auto"
+            style={{ height: "clamp(64px, 10vw, 120px)" }}
+          />
         </div>
 
         {/* Nav links — mono uppercase */}

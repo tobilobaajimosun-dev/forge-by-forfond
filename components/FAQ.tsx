@@ -59,10 +59,12 @@ export default function FAQ() {
             <p className="text-white/30 text-sm font-light leading-relaxed mt-6 max-w-[220px]">
               Can&apos;t find what you&apos;re looking for?{" "}
               <a
-                href="#register"
+                href="https://tally.so/r/ZjDaXA"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#B69556] hover:text-white transition-colors duration-150 underline underline-offset-4"
               >
-                Register and we&apos;ll be in touch.
+                Request an invite and we&apos;ll be in touch.
               </a>
             </p>
           </div>

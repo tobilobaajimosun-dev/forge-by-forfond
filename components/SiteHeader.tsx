@@ -107,7 +107,7 @@ export default function SiteHeader() {
               <img
                 src="/forge-logo.svg"
                 alt="Forge by ForFond"
-                className="h-7 md:h-8 w-auto object-contain"
+                className="h-5 md:h-6 w-auto object-contain"
                 onError={(e) => {
                   // Fallback to wordmark if the asset isn't present yet
                   const el = e.currentTarget;
