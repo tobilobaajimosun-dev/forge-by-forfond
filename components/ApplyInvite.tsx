@@ -1,30 +1,27 @@
 export default function ApplyInvite() {
   return (
     <div className="bg-[#272727] px-4 md:px-6">
-      {/* Full-bleed CTAs (Config style) — wide + tall */}
-      <div className="flex flex-col gap-2.5">
-        {/* Primary — Request an Invite */}
+      {/* Config-style CTAs — full-width, tall, solid blocks, small radius, tight gap */}
+      <div className="flex flex-col gap-1.5">
+        {/* Primary — solid (brand gold) */}
         <a
           href="https://tally.so/r/ZjDaXA"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center justify-center w-full h-20 md:h-24 rounded-2xl hover:rounded-[40px] bg-[#B69556] hover:bg-[#c9a96a] active:scale-[0.995] transition-all duration-300"
+          className="flex items-center justify-center w-full h-[88px] md:h-24 rounded-lg bg-[#B69556] hover:bg-[#c9a96a] active:scale-[0.997] transition-colors duration-150"
         >
-          <span className="text-base md:text-lg font-bold uppercase tracking-[0.22em] text-black">
-            Request an Invite
-          </span>
-          <span className="ml-4 text-black font-bold text-2xl group-hover:translate-x-1.5 transition-transform duration-150">
-            →
+          <span className="text-base md:text-xl font-semibold tracking-tight text-black">
+            Register
           </span>
         </a>
 
-        {/* Secondary — View Schedule (outlined) */}
+        {/* Secondary — filled charcoal block */}
         <a
           href="#agenda"
-          className="group flex items-center justify-center w-full h-20 md:h-24 rounded-2xl hover:rounded-[40px] border border-white/20 hover:border-white/45 active:scale-[0.995] transition-all duration-300"
+          className="flex items-center justify-center w-full h-[88px] md:h-24 rounded-lg bg-[#323232] hover:bg-[#3a3a3a] active:scale-[0.997] transition-colors duration-150"
         >
-          <span className="text-base md:text-lg font-bold uppercase tracking-[0.22em] text-white/60 group-hover:text-white transition-colors duration-150">
-            View Schedule
+          <span className="text-base md:text-xl font-semibold tracking-tight text-white/70 hover:text-white transition-colors duration-150">
+            View Agenda
           </span>
         </a>
       </div>

@@ -10,7 +10,6 @@ import ForgeOrbit from "@/components/ForgeOrbit";
 import MadeForYou from "@/components/MadeForYou";
 import Schedule from "@/components/Schedule";
 import FAQ from "@/components/FAQ";
-import HalftoneDots from "@/components/HalftoneDots";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -70,14 +69,7 @@ export default function Home() {
         <FAQ />
       </ScrollReveal>
 
-      {/* 12. Brand halftone band — interactive */}
-      <section className="bg-[#111111] px-4 md:px-6 pt-8 pb-2">
-        <div className="max-w-[1400px] mx-auto rounded-2xl overflow-hidden border border-white/[0.06]">
-          <HalftoneDots text="FORGE" height={300} gap={12} bg="#0f0f0f" dot="#B69556" accent="#f6dca0" />
-        </div>
-      </section>
-
-      {/* 13. Close */}
+      {/* 12. Close */}
       <ScrollReveal delay={40}>
         <Footer />
       </ScrollReveal>
