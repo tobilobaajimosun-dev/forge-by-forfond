@@ -69,11 +69,13 @@ const sessions = [
   },
 ];
 
+const GOLD_PILL = "text-[#B69556] border-[#B69556]/30 bg-[#B69556]/10";
+
 const trackColors: Record<string, string> = {
-  "Growth Mindset": "text-[#B69556] border-[#B69556]/30 bg-[#B69556]/10",
-  "Growth Engines": "text-blue-300 border-blue-500/30 bg-blue-500/10",
-  "Personal Finance": "text-purple-300 border-purple-500/30 bg-purple-500/10",
-  Chatroom: "text-[#B69556] border-[#B69556]/30 bg-[#B69556]/10",
+  "Growth Mindset": GOLD_PILL,
+  "Growth Engines": GOLD_PILL,
+  "Personal Finance": GOLD_PILL,
+  Chatroom: GOLD_PILL,
   Break: "text-white/25 border-white/10 bg-white/5",
   General: "text-white/30 border-white/10 bg-white/5",
 };

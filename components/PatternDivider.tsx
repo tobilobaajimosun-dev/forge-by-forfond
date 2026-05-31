@@ -1,77 +1,83 @@
 export default function PatternDivider() {
   return (
-    <div className="w-full overflow-hidden bg-[#272727]" style={{ height: "96px" }}>
+    <div className="w-full overflow-hidden" style={{ height: "180px", background: "#1a1a1a" }}>
       <svg
         width="100%"
-        height="96"
-        viewBox="0 0 1440 96"
+        height="180"
+        viewBox="0 0 1440 180"
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        {/* Background */}
-        <rect width="1440" height="96" fill="#1a1a1a" />
+        <rect width="1440" height="180" fill="#1a1a1a" />
 
-        {/* ── Gold shapes ── */}
-        {/* Triangles */}
-        <polygon points="40,72 64,32 88,72" fill="#B69556" opacity="0.9" />
-        <polygon points="180,80 196,52 212,80" fill="#B69556" opacity="0.5" />
-        <polygon points="620,20 644,68 596,68" fill="#B69556" opacity="0.7" />
-        <polygon points="960,76 976,48 992,76" fill="#B69556" opacity="0.6" />
-        <polygon points="1280,24 1304,72 1256,72" fill="#B69556" opacity="0.8" />
-        <polygon points="1380,68 1396,40 1412,68" fill="#B69556" opacity="0.5" />
+        {/* ── Large gold triangles ── */}
+        <polygon points="48,148 96,60 144,148" fill="#B69556" opacity="0.92" />
+        <polygon points="220,160 252,100 284,160" fill="#B69556" opacity="0.55" />
+        <polygon points="640,24 700,136 580,136" fill="#B69556" opacity="0.72" />
+        <polygon points="980,152 1012,92 1044,152" fill="#B69556" opacity="0.6" />
+        <polygon points="1260,18 1330,148 1190,148" fill="#B69556" opacity="0.82" />
+        <polygon points="1390,130 1416,76 1440,130" fill="#B69556" opacity="0.5" />
+        <polygon points="760,150 790,90 820,150" fill="#B69556" opacity="0.45" />
 
-        {/* Rounded rectangles */}
-        <rect x="120" y="36" width="36" height="36" rx="6" fill="#B69556" opacity="0.35" />
-        <rect x="340" y="20" width="24" height="24" rx="4" fill="#B69556" opacity="0.5" />
-        <rect x="490" y="52" width="40" height="20" rx="4" fill="#B69556" opacity="0.3" />
-        <rect x="760" y="32" width="28" height="28" rx="5" fill="#B69556" opacity="0.45" />
-        <rect x="1100" y="44" width="32" height="20" rx="4" fill="#B69556" opacity="0.35" />
-        <rect x="1200" y="18" width="20" height="20" rx="3" fill="#B69556" opacity="0.5" />
+        {/* ── Chevrons / open triangles ── */}
+        <path d="M 490 100 L 520 55 L 550 100" stroke="#B69556" strokeWidth="4" fill="none" opacity="0.65" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M 870 120 L 900 68 L 930 120" stroke="#B69556" strokeWidth="3.5" fill="none" opacity="0.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M 1110 90 L 1134 48 L 1158 90" stroke="white" strokeWidth="3" fill="none" opacity="0.3" strokeLinecap="round" strokeLinejoin="round"/>
 
-        {/* Circles / dots */}
-        <circle cx="160" cy="24" r="6" fill="white" opacity="0.5" />
-        <circle cx="270" cy="60" r="5" fill="white" opacity="0.4" />
-        <circle cx="270" cy="76" r="5" fill="white" opacity="0.4" />
-        <circle cx="286" cy="68" r="5" fill="white" opacity="0.4" />
-        <circle cx="440" cy="30" r="4" fill="#B69556" opacity="0.7" />
-        <circle cx="456" cy="30" r="4" fill="#B69556" opacity="0.7" />
-        <circle cx="472" cy="30" r="4" fill="#B69556" opacity="0.7" />
-        <circle cx="700" cy="56" r="7" fill="white" opacity="0.3" />
-        <circle cx="720" cy="56" r="7" fill="white" opacity="0.3" />
-        <circle cx="740" cy="56" r="7" fill="white" opacity="0.3" />
-        <circle cx="870" cy="24" r="5" fill="#B69556" opacity="0.6" />
-        <circle cx="886" cy="24" r="5" fill="#B69556" opacity="0.6" />
-        <circle cx="1050" cy="68" r="6" fill="white" opacity="0.35" />
-        <circle cx="1066" cy="68" r="6" fill="white" opacity="0.35" />
-        <circle cx="1082" cy="68" r="6" fill="white" opacity="0.35" />
-        <circle cx="1340" cy="36" r="5" fill="#B69556" opacity="0.5" />
-        <circle cx="1356" cy="36" r="5" fill="#B69556" opacity="0.5" />
+        {/* ── Rounded rectangles ── */}
+        <rect x="160" y="60" width="52" height="52" rx="8" fill="#B69556" opacity="0.38" />
+        <rect x="360" y="32" width="36" height="36" rx="6" fill="#B69556" opacity="0.52" />
+        <rect x="560" y="112" width="52" height="28" rx="6" fill="#B69556" opacity="0.32" />
+        <rect x="800" y="52" width="40" height="40" rx="7" fill="#B69556" opacity="0.48" />
+        <rect x="1080" y="88" width="44" height="28" rx="5" fill="#B69556" opacity="0.38" />
+        <rect x="1190" y="30" width="30" height="30" rx="5" fill="#B69556" opacity="0.52" />
+        <rect x="1330" y="70" width="36" height="36" rx="6" fill="#B69556" opacity="0.4" />
 
-        {/* Wavy / curved lines */}
-        <path d="M 100 56 Q 120 36 140 56 Q 160 76 180 56" stroke="white" strokeWidth="3" fill="none" opacity="0.3" strokeLinecap="round"/>
-        <path d="M 380 28 Q 400 12 420 28 Q 440 44 460 28" stroke="#B69556" strokeWidth="2.5" fill="none" opacity="0.55" strokeLinecap="round"/>
-        <path d="M 540 64 Q 560 44 580 64 Q 600 84 620 64" stroke="white" strokeWidth="2" fill="none" opacity="0.25" strokeLinecap="round"/>
-        <path d="M 800 40 Q 820 20 840 40 Q 860 60 880 40" stroke="#B69556" strokeWidth="3" fill="none" opacity="0.45" strokeLinecap="round"/>
-        <path d="M 1000 60 Q 1020 44 1040 60 Q 1060 76 1080 60" stroke="white" strokeWidth="2" fill="none" opacity="0.3" strokeLinecap="round"/>
-        <path d="M 1150 30 Q 1170 14 1190 30 Q 1210 46 1230 30" stroke="#B69556" strokeWidth="2.5" fill="none" opacity="0.5" strokeLinecap="round"/>
+        {/* ── Dot clusters ── */}
+        <circle cx="200" cy="40" r="8" fill="white" opacity="0.45" />
+        <circle cx="316" cy="110" r="7" fill="white" opacity="0.38" />
+        <circle cx="316" cy="132" r="7" fill="white" opacity="0.38" />
+        <circle cx="336" cy="121" r="7" fill="white" opacity="0.35" />
 
-        {/* Diagonal line groups */}
-        <line x1="300" y1="28" x2="320" y2="72" stroke="white" strokeWidth="2.5" opacity="0.3" strokeLinecap="round"/>
-        <line x1="314" y1="28" x2="334" y2="72" stroke="white" strokeWidth="2.5" opacity="0.25" strokeLinecap="round"/>
-        <line x1="328" y1="28" x2="348" y2="72" stroke="white" strokeWidth="2.5" opacity="0.2" strokeLinecap="round"/>
+        <circle cx="468" cy="44" r="6" fill="#B69556" opacity="0.72" />
+        <circle cx="488" cy="44" r="6" fill="#B69556" opacity="0.72" />
+        <circle cx="508" cy="44" r="6" fill="#B69556" opacity="0.72" />
 
-        <line x1="920" y1="72" x2="940" y2="28" stroke="#B69556" strokeWidth="2.5" opacity="0.5" strokeLinecap="round"/>
-        <line x1="934" y1="72" x2="954" y2="28" stroke="#B69556" strokeWidth="2.5" opacity="0.4" strokeLinecap="round"/>
+        <circle cx="720" cy="108" r="9" fill="white" opacity="0.28" />
+        <circle cx="744" cy="108" r="9" fill="white" opacity="0.28" />
+        <circle cx="768" cy="108" r="9" fill="white" opacity="0.28" />
 
-        {/* Arrow / chevron shapes */}
-        <path d="M 660 48 L 680 28 L 700 48" stroke="#B69556" strokeWidth="3" fill="none" opacity="0.6" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M 1310 52 L 1330 28 L 1350 52" stroke="white" strokeWidth="2.5" fill="none" opacity="0.35" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="910" cy="38" r="7" fill="#B69556" opacity="0.6" />
+        <circle cx="930" cy="38" r="7" fill="#B69556" opacity="0.6" />
 
-        {/* Small filled squares */}
-        <rect x="566" y="38" width="12" height="12" fill="white" opacity="0.25" />
-        <rect x="582" y="38" width="12" height="12" fill="white" opacity="0.2" />
-        <rect x="1440" y="0" width="0" height="0" />
+        <circle cx="1050" cy="130" r="8" fill="white" opacity="0.32" />
+        <circle cx="1072" cy="130" r="8" fill="white" opacity="0.32" />
+        <circle cx="1094" cy="130" r="8" fill="white" opacity="0.32" />
+
+        <circle cx="1360" cy="52" r="7" fill="#B69556" opacity="0.52" />
+        <circle cx="1380" cy="52" r="7" fill="#B69556" opacity="0.52" />
+
+        {/* ── Wavy / curved lines ── */}
+        <path d="M 112 100 Q 136 68 160 100 Q 184 132 208 100" stroke="white" strokeWidth="3.5" fill="none" opacity="0.28" strokeLinecap="round"/>
+        <path d="M 396 44 Q 424 18 452 44 Q 480 70 508 44" stroke="#B69556" strokeWidth="3" fill="none" opacity="0.55" strokeLinecap="round"/>
+        <path d="M 590 124 Q 618 92 646 124 Q 674 156 702 124" stroke="white" strokeWidth="2.5" fill="none" opacity="0.22" strokeLinecap="round"/>
+        <path d="M 840 72 Q 868 40 896 72 Q 924 104 952 72" stroke="#B69556" strokeWidth="3.5" fill="none" opacity="0.48" strokeLinecap="round"/>
+        <path d="M 1000 116 Q 1028 84 1056 116 Q 1084 148 1112 116" stroke="white" strokeWidth="2.5" fill="none" opacity="0.28" strokeLinecap="round"/>
+        <path d="M 1148 52 Q 1176 24 1204 52 Q 1232 80 1260 52" stroke="#B69556" strokeWidth="3" fill="none" opacity="0.52" strokeLinecap="round"/>
+
+        {/* ── Diagonal line bundles ── */}
+        <line x1="270" y1="44" x2="302" y2="148" stroke="white" strokeWidth="3" opacity="0.28" strokeLinecap="round"/>
+        <line x1="288" y1="44" x2="320" y2="148" stroke="white" strokeWidth="3" opacity="0.22" strokeLinecap="round"/>
+        <line x1="306" y1="44" x2="338" y2="148" stroke="white" strokeWidth="3" opacity="0.18" strokeLinecap="round"/>
+
+        <line x1="960" y1="148" x2="992" y2="44" stroke="#B69556" strokeWidth="3" opacity="0.52" strokeLinecap="round"/>
+        <line x1="978" y1="148" x2="1010" y2="44" stroke="#B69556" strokeWidth="3" opacity="0.42" strokeLinecap="round"/>
+
+        {/* ── Small filled squares ── */}
+        <rect x="600" y="64" width="16" height="16" fill="white" opacity="0.22" />
+        <rect x="622" y="64" width="16" height="16" fill="white" opacity="0.18" />
+        <rect x="1160" y="108" width="16" height="16" fill="#B69556" opacity="0.4" />
       </svg>
     </div>
   );

@@ -21,7 +21,11 @@ const sessions = [
 
 export default function InsideForge() {
   return (
-    <section id="agenda" className="bg-[#272727] px-6 md:px-16 py-24 md:py-36">
+    <section
+      id="agenda"
+      className="px-6 md:px-16 py-24 md:py-36"
+      style={{ background: "linear-gradient(to bottom, #1a1a1a 0%, #272727 140px)" }}
+    >
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}

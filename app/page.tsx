@@ -11,6 +11,7 @@ import Chatroom from "@/components/Chatroom";
 import Speakers from "@/components/Speakers";
 import MadeForYou from "@/components/MadeForYou";
 import FAQ from "@/components/FAQ";
+import ForgeOrbit from "@/components/ForgeOrbit";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -73,7 +74,12 @@ export default function Home() {
         <FAQ />
       </ScrollReveal>
 
-      {/* 13. Footer */}
+      {/* 13. Forge orbit — expertise visualization */}
+      <ScrollReveal delay={60}>
+        <ForgeOrbit />
+      </ScrollReveal>
+
+      {/* 14. Footer */}
       <ScrollReveal delay={40}>
         <Footer />
       </ScrollReveal>
