@@ -35,7 +35,7 @@ export default function Countdown() {
   ];
 
   return (
-    <section className="bg-[#272727] px-6 md:px-16 py-16 md:py-20 border-t border-white/[0.06]">
+    <section className="bg-[#272727] px-6 md:px-16 py-16 md:py-20">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
 
         {/* Label */}

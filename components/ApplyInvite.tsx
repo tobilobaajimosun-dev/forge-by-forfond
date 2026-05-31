@@ -15,7 +15,7 @@ export default function ApplyInvite() {
             href="https://luma.com/j2sbmjc7"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-center w-full h-16 rounded-xl bg-[#B69556] hover:bg-[#c9a96a] active:scale-[0.99] transition-all duration-150"
+            className="group flex items-center justify-center w-full h-16 rounded-xl hover:rounded-[32px] bg-[#B69556] hover:bg-[#c9a96a] active:scale-[0.99] transition-all duration-300"
           >
             <span className="text-sm font-bold uppercase tracking-[0.25em] text-black">
               Request an Invite
@@ -28,7 +28,7 @@ export default function ApplyInvite() {
           {/* Secondary — View Schedule (outlined, not filled) */}
           <a
             href="#agenda"
-            className="group flex items-center justify-center w-full h-16 rounded-xl border border-white/20 hover:border-white/45 active:scale-[0.99] transition-all duration-150"
+            className="group flex items-center justify-center w-full h-16 rounded-xl hover:rounded-[32px] border border-white/20 hover:border-white/45 active:scale-[0.99] transition-all duration-300"
           >
             <span className="text-sm font-bold uppercase tracking-[0.25em] text-white/60 group-hover:text-white transition-colors duration-150">
               View Schedule

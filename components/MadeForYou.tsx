@@ -83,15 +83,28 @@ export default function MadeForYou() {
           ))}
 
           {/* Last cell — CTA to balance the 6-cell grid (5 criteria + 1 CTA) */}
-          <div className="bg-[#B69556] p-8 md:p-10 flex flex-col justify-between">
-            <h3 className="text-black font-bold text-xl leading-snug">
+          <div className="relative bg-[#B69556] p-8 md:p-10 flex flex-col justify-between overflow-hidden">
+            {/* Floating 3D icon — calls attention to the section */}
+            <div
+              className="icon-float absolute -top-2 right-4 pointer-events-none select-none"
+              style={{
+                fontSize: "92px",
+                lineHeight: 1,
+                filter: "drop-shadow(0 12px 20px rgba(0,0,0,0.35))",
+              }}
+              aria-hidden
+            >
+              🎟️
+            </div>
+
+            <h3 className="relative text-black font-bold text-xl leading-snug max-w-[60%]">
               Sound like you?
             </h3>
             <a
               href="https://luma.com/j2sbmjc7"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-black font-bold text-sm uppercase tracking-widest group/cta"
+              className="relative mt-6 inline-flex items-center gap-2 text-black font-bold text-sm uppercase tracking-widest group/cta"
             >
               Request an Invite
               <span className="group-hover/cta:translate-x-1 transition-transform duration-150">→</span>

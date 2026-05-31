@@ -147,6 +147,7 @@ export default function Chatroom() {
                 width: "clamp(230px, 26vw, 320px)",
                 minHeight: "340px",
                 padding: "28px 24px",
+                borderRadius: "18px",
                 // Overlap adjacent cards slightly
                 marginRight: "-12px",
                 marginTop: staggerY,
