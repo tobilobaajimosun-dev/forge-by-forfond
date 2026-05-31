@@ -97,3 +97,30 @@ h1, h2, h3, h4, h5, h6 {
     transition: opacity 400ms ease;
   }
 }
+
+/* ── Orbit (The Room) ── */
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-counter {
+  to { transform: rotate(-360deg); }
+}
+.orbit-spin {
+  animation: orbit-spin 70s linear infinite;
+}
+.orbit-counter {
+  animation: orbit-counter 70s linear infinite;
+}
+@keyframes orbit-center-pulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.08); }
+}
+.orbit-center-glow {
+  animation: orbit-center-pulse 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-spin, .orbit-counter, .orbit-center-glow {
+    animation: none !important;
+  }
+}

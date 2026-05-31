@@ -18,7 +18,7 @@ export default function ApplyInvite() {
             className="group flex items-center justify-center w-full h-16 rounded-xl bg-[#B69556] hover:bg-[#c9a96a] active:scale-[0.99] transition-all duration-150"
           >
             <span className="text-sm font-bold uppercase tracking-[0.25em] text-black">
-              Apply for an Invite
+              Request an Invite
             </span>
             <span className="ml-3 text-black font-bold text-lg group-hover:translate-x-1 transition-transform duration-150">
               →

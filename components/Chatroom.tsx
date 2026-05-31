@@ -153,8 +153,8 @@ export default function Chatroom() {
                 zIndex: isActive ? 10 : i,
                 background: isActive ? "#B69556" : "#202020",
                 boxShadow: isActive
-                  ? "0 32px 64px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.4)"
-                  : "0 20px 48px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.3)",
+                  ? "0 16px 40px rgba(0,0,0,0.28)"
+                  : "0 8px 24px rgba(0,0,0,0.18)",
                 transition:
                   "background 250ms cubic-bezier(0.23,1,0.32,1), box-shadow 250ms cubic-bezier(0.23,1,0.32,1), z-index 0ms",
                 scrollSnapAlign: "start",

@@ -5,7 +5,6 @@ const sessions = [
     title: "Registration & Welcome Breakfast",
     description: "Arrive, connect, and settle in.",
     track: "General",
-    speakers: [],
   },
   {
     time: "10:00 AM",
@@ -14,7 +13,6 @@ const sessions = [
     description:
       "What global headwinds mean for SMEs, where the real opportunities are in 2026, and how to build a practical expansion plan around smart pivots and strategic alliances.",
     track: "Growth Mindset",
-    speakers: [],
   },
   {
     time: "11:15 AM",
@@ -22,7 +20,6 @@ const sessions = [
     title: "Break",
     description: "",
     track: "Break",
-    speakers: [],
   },
   {
     time: "11:30 AM",
@@ -31,7 +28,6 @@ const sessions = [
     description:
       "Company setup, operational systems, compliance, people management, and corporate governance — the work that quietly determines whether your business carries the weight of growth or breaks under it.",
     track: "Growth Engines",
-    speakers: [],
   },
   {
     time: "12:45 PM",
@@ -39,7 +35,6 @@ const sessions = [
     title: "Lunch Break",
     description: "",
     track: "Break",
-    speakers: [],
   },
   {
     time: "1:45 PM",
@@ -48,7 +43,6 @@ const sessions = [
     description:
       "How to pay yourself correctly, permanently separate business and personal money, build personal wealth alongside your company, and protect everything — pension, insurance, and beyond.",
     track: "Personal Finance",
-    speakers: [],
   },
   {
     time: "3:00 PM",
@@ -57,7 +51,6 @@ const sessions = [
     description:
       "Every delegate sits privately with a specialist in their chosen area. Twenty minutes. One expert. No panel. No crowd.",
     track: "Chatroom",
-    speakers: [],
   },
   {
     time: "5:00 PM",
@@ -65,50 +58,49 @@ const sessions = [
     title: "Networking & Close",
     description: "Connect with fellow founders and the ForFond team.",
     track: "General",
-    speakers: [],
   },
 ];
 
-const GOLD_PILL = "text-[#B69556] border-[#B69556]/30 bg-[#B69556]/10";
+const GOLD_PILL = "text-[#8a6d33] border-[#B69556]/50 bg-[#B69556]/15";
 
 const trackColors: Record<string, string> = {
   "Growth Mindset": GOLD_PILL,
   "Growth Engines": GOLD_PILL,
   "Personal Finance": GOLD_PILL,
   Chatroom: GOLD_PILL,
-  Break: "text-white/25 border-white/10 bg-white/5",
-  General: "text-white/30 border-white/10 bg-white/5",
+  Break: "text-black/30 border-black/10 bg-black/[0.03]",
+  General: "text-black/35 border-black/10 bg-black/[0.03]",
 };
 
 export default function Schedule() {
   return (
-    <section id="agenda" className="bg-[#272727] px-6 md:px-16 py-24 md:py-36">
+    <section id="agenda" className="bg-[#f4f1ea] px-6 md:px-16 py-24 md:py-36">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-0">
           <div>
-            <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-4">
+            <p className="text-[#8a6d33] text-xs font-semibold uppercase tracking-[0.25em] mb-4">
               June 13, 2026
             </p>
             <h2
-              className="font-bold text-white leading-[0.92] tracking-tight"
+              className="font-bold text-[#1a1a1a] leading-[0.92] tracking-tight"
               style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
             >
               Full Schedule
             </h2>
           </div>
-          <p className="text-white/30 text-sm font-light max-w-xs md:text-right">
+          <p className="text-black/40 text-sm font-light max-w-xs md:text-right">
             All times WAT (West Africa Time, GMT+1).
             <br />Schedule subject to minor adjustments.
           </p>
         </div>
 
         {/* Column headers */}
-        <div className="mt-12 mb-0 grid grid-cols-[120px_1fr_auto] gap-6 pb-3 border-b border-white/10">
-          <span className="text-white/25 text-[10px] uppercase tracking-widest font-medium">Time</span>
-          <span className="text-white/25 text-[10px] uppercase tracking-widest font-medium">Session</span>
-          <span className="text-white/25 text-[10px] uppercase tracking-widest font-medium hidden md:block">Track</span>
+        <div className="mt-12 mb-0 grid grid-cols-[120px_1fr_auto] gap-6 pb-3 border-b border-black/15">
+          <span className="text-black/35 text-[10px] uppercase tracking-widest font-medium">Time</span>
+          <span className="text-black/35 text-[10px] uppercase tracking-widest font-medium">Session</span>
+          <span className="text-black/35 text-[10px] uppercase tracking-widest font-medium hidden md:block">Track</span>
         </div>
 
         {/* Sessions */}
@@ -117,20 +109,20 @@ export default function Schedule() {
           return (
             <div
               key={i}
-              className={`grid grid-cols-[120px_1fr] md:grid-cols-[120px_1fr_auto] gap-6 py-6 border-b border-white/[0.07] group ${
-                isBreak ? "opacity-40" : "hover:bg-white/[0.015] transition-colors duration-150"
+              className={`grid grid-cols-[120px_1fr] md:grid-cols-[120px_1fr_auto] gap-6 py-6 border-b border-black/[0.08] group ${
+                isBreak ? "opacity-50" : "hover:bg-black/[0.02] transition-colors duration-150"
               }`}
             >
               {/* Time */}
               <div className="shrink-0">
                 <p
-                  className="text-[#B69556] text-xs font-mono font-semibold"
+                  className="text-[#8a6d33] text-xs font-semibold"
                   style={{ fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace" }}
                 >
                   {s.time}
                 </p>
                 <p
-                  className="text-white/20 text-[10px] font-mono mt-0.5"
+                  className="text-black/30 text-[10px] mt-0.5"
                   style={{ fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace" }}
                 >
                   – {s.end}
@@ -139,11 +131,11 @@ export default function Schedule() {
 
               {/* Title + description */}
               <div className="min-w-0">
-                <p className={`font-semibold text-sm md:text-base leading-snug ${isBreak ? "text-white/40" : "text-white"}`}>
+                <p className={`font-semibold text-sm md:text-base leading-snug ${isBreak ? "text-black/40" : "text-[#1a1a1a]"}`}>
                   {s.title}
                 </p>
                 {s.description && (
-                  <p className="text-white/35 text-sm font-light leading-relaxed mt-2 max-w-2xl">
+                  <p className="text-black/45 text-sm font-light leading-relaxed mt-2 max-w-2xl">
                     {s.description}
                   </p>
                 )}
@@ -162,7 +154,7 @@ export default function Schedule() {
         })}
 
         {/* Footer note */}
-        <p className="text-white/20 text-xs font-light mt-6 uppercase tracking-widest">
+        <p className="text-black/30 text-xs font-light mt-6 uppercase tracking-widest">
           Speakers for each session to be announced
         </p>
 

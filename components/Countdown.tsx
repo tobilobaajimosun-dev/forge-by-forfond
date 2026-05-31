@@ -36,46 +36,41 @@ export default function Countdown() {
 
   return (
     <section className="bg-[#272727] px-6 md:px-16 py-16 md:py-20 border-t border-white/[0.06]">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
 
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        {/* Label */}
+        <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-2">
+          Counting Down
+        </p>
+        <p className="text-white/35 text-sm font-light mb-10">
+          June 13, 2026 &bull; Lagos, Nigeria
+        </p>
 
-          <div>
-            <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-2">
-              Counting Down
-            </p>
-            <p className="text-white/35 text-sm font-light">
-              June 13, 2026 &bull; Lagos, Nigeria
-            </p>
-          </div>
-
-          {/* Timer units */}
-          <div className="flex items-end gap-2 md:gap-3">
-            {units.map((u, i) => (
-              <div key={u.label} className="flex items-end gap-2 md:gap-3">
-                <div className="text-center">
-                  <div
-                    className="font-bold text-white tabular-nums leading-none"
-                    style={{ fontSize: "clamp(40px, 7vw, 80px)" }}
-                  >
-                    {u.value}
-                  </div>
-                  <p className="text-white/30 text-[10px] uppercase tracking-widest font-medium mt-1">
-                    {u.label}
-                  </p>
+        {/* Timer units — centered, semibold */}
+        <div className="flex items-end justify-center gap-2 md:gap-4">
+          {units.map((u, i) => (
+            <div key={u.label} className="flex items-end gap-2 md:gap-4">
+              <div className="text-center">
+                <div
+                  className="font-semibold text-white tabular-nums leading-none"
+                  style={{ fontSize: "clamp(44px, 7vw, 88px)" }}
+                >
+                  {u.value}
                 </div>
-                {i < units.length - 1 && (
-                  <span
-                    className="text-[#B69556] font-bold pb-6 md:pb-8 opacity-60"
-                    style={{ fontSize: "clamp(24px, 4vw, 48px)" }}
-                  >
-                    .
-                  </span>
-                )}
+                <p className="text-white/30 text-[10px] uppercase tracking-widest font-medium mt-2">
+                  {u.label}
+                </p>
               </div>
-            ))}
-          </div>
-
+              {i < units.length - 1 && (
+                <span
+                  className="text-[#B69556] font-semibold pb-6 md:pb-8 opacity-50"
+                  style={{ fontSize: "clamp(20px, 3vw, 36px)" }}
+                >
+                  :
+                </span>
+              )}
+            </div>
+          ))}
         </div>
 
       </div>
