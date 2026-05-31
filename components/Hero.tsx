@@ -1,9 +1,7 @@
-export default function Hero() {
+export default function HeroText() {
   return (
-    <section className="relative min-h-screen bg-[#272727] flex flex-col justify-between overflow-hidden px-6 md:px-16 pt-32 pb-12">
-
-      {/* Main content — left-aligned, editorial */}
-      <div className="flex-1 flex flex-col justify-center max-w-6xl mx-auto w-full">
+    <section className="bg-[#272727] px-6 md:px-16 py-24 md:py-36">
+      <div className="max-w-6xl mx-auto">
 
         {/* Eyebrow */}
         <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-10">
@@ -17,7 +15,7 @@ export default function Hero() {
         >
           Built to Be
           <br />
-          <span className="text-white/30">Broken.</span>
+          <span className="text-white/25">Broken.</span>
           <br />
           Or Built to
           <br />
@@ -50,18 +48,18 @@ export default function Hero() {
             </a>
           </div>
         </div>
-      </div>
 
-      {/* Bottom metadata bar */}
-      <div className="max-w-6xl mx-auto w-full mt-16">
-        <div className="w-full h-px bg-white/10 mb-6" />
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-12 text-white/35 text-xs uppercase tracking-widest font-medium">
-          <span>One Day &bull; Four Sessions</span>
-          <span>Governance &bull; Operations &bull; Finance &bull; Funding</span>
-          <span className="sm:ml-auto text-[#B69556]/70">ForFond &copy; 2026</span>
+        {/* Bottom metadata */}
+        <div className="mt-20">
+          <div className="w-full h-px bg-white/10 mb-6" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-12 text-white/35 text-xs uppercase tracking-widest font-medium">
+            <span>One Day &bull; Four Sessions</span>
+            <span>Governance &bull; Operations &bull; Finance &bull; Funding</span>
+            <span className="sm:ml-auto text-[#B69556]/60">June 13, 2026 &bull; Lagos, Nigeria</span>
+          </div>
         </div>
-      </div>
 
+      </div>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import HeroSlider from "@/components/HeroSlider";
+import HeroText from "@/components/Hero";
 import Agenda from "@/components/Agenda";
 import Speakers from "@/components/Speakers";
 import Register from "@/components/Register";
@@ -9,7 +10,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <HeroSlider />
+      <HeroText />
       <Agenda />
       <Speakers />
       <Register />
