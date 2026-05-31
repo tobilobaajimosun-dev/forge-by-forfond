@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
+/*
+  ES Rebond Grotesque TRIAL — drop your font files in /public/fonts/ and
+  uncomment the block below to activate.
+
+@font-face {
+  font-family: "ESRebondGrotesque";
+  src: url("/fonts/ESRebondGrotesque-Trial-Bold.woff2") format("woff2"),
+       url("/fonts/ESRebondGrotesque-Trial-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #272727;
+  --foreground: #ffffff;
+  --gold: #B69556;
+
+  /*
+    Font stack:
+    1. ES Rebond Grotesque TRIAL (when files are added + @font-face uncommented)
+    2. SF Pro Display (Apple system font — renders on Mac/iOS automatically)
+    3. System sans fallbacks for Windows/Android
+  */
+  --font-display: "ESRebondGrotesque", -apple-system, "SF Pro Display",
+    BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gold: var(--gold);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apply display font to all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
