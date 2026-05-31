@@ -1,5 +1,5 @@
-// Column-style section label — a small rounded pill with a uppercase label
-// and a little accent bar on the right.
+// Column-style section label — a small rounded pill with an uppercase label
+// and a blinking text caret on the right.
 export default function SectionLabel({
   children,
   dark = false,
@@ -11,7 +11,7 @@ export default function SectionLabel({
   const goldDark = "#8a6d33";
   return (
     <span
-      className="inline-flex items-center gap-2.5 rounded-lg px-3 py-1.5 mb-7"
+      className="inline-flex items-center gap-2 rounded-lg px-3 py-1.5 mb-7"
       style={{
         background: dark ? "rgba(138,109,51,0.10)" : "rgba(182,149,86,0.10)",
         border: `1px solid ${dark ? "rgba(138,109,51,0.25)" : "rgba(182,149,86,0.22)"}`,
@@ -23,9 +23,14 @@ export default function SectionLabel({
       >
         {children}
       </span>
+      {/* Blinking text caret */}
       <span
-        className="block rounded-[2px]"
-        style={{ width: "8px", height: "14px", background: dark ? "rgba(138,109,51,0.45)" : "rgba(182,149,86,0.45)" }}
+        className="block caret-blink"
+        style={{
+          width: "2px",
+          height: "13px",
+          background: dark ? goldDark : gold,
+        }}
       />
     </span>
   );

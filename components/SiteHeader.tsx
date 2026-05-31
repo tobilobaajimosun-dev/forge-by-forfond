@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const EVENT_DATE = new Date("2026-06-13T09:00:00+01:00");
-const LUMA = "https://tally.so/r/ZjDaXA";
+const REGISTER = "https://tally.so/r/ZjDaXA";
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -22,10 +22,22 @@ function getTimeLeft() {
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
   const [time, setTime] = useState(getTimeLeft());
+  const lastY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 120);
+    function onScroll() {
+      const y = window.scrollY;
+      setScrolled(y > 120);
+      // Hide nav when scrolling down past 220px; show when scrolling up
+      if (y > lastY.current && y > 220) {
+        setNavHidden(true);
+      } else if (y < lastY.current) {
+        setNavHidden(false);
+      }
+      lastY.current = y;
+    }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,16 +51,13 @@ export default function SiteHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
 
-      {/* Countdown banner — slides in on scroll, sits above the nav */}
+      {/* Countdown banner — appears on scroll, always stays once shown */}
       <div
         className="overflow-hidden transition-all duration-300 ease-out"
-        style={{
-          maxHeight: scrolled ? "40px" : "0px",
-          opacity: scrolled ? 1 : 0,
-        }}
+        style={{ maxHeight: scrolled ? "40px" : "0px", opacity: scrolled ? 1 : 0 }}
       >
         <a
-          href={LUMA}
+          href={REGISTER}
           target="_blank"
           rel="noopener noreferrer"
           className="block bg-[#B69556] hover:bg-[#c9a96a] transition-colors duration-150"
@@ -71,56 +80,80 @@ export default function SiteHeader() {
         </a>
       </div>
 
-      {/* Nav bar — glass + background layer */}
-      <nav className="relative border-b border-white/[0.08]">
-        {/* Background layer + glass */}
-        <div className="absolute inset-0 bg-[#272727]/70 backdrop-blur-xl" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
+      {/* Nav bar — hides on scroll-down, reappears on scroll-up */}
+      <div
+        className="transition-all duration-300 ease-out"
+        style={{
+          transform: navHidden ? "translateY(-100%)" : "translateY(0)",
+          opacity: navHidden ? 0 : 1,
+          pointerEvents: navHidden ? "none" : "auto",
+        }}
+      >
+        <nav className="relative border-b border-white/[0.08]">
+          <div className="absolute inset-0 bg-[#272727]/70 backdrop-blur-xl" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
 
-        <div className="relative max-w-6xl mx-auto px-6 md:px-16 h-14 flex items-center">
+          <div className="relative max-w-6xl mx-auto px-6 md:px-16 h-16 flex items-center">
 
-          {/* Left nav */}
-          <div className="hidden md:flex items-center gap-7 text-[11px] text-white/45 uppercase tracking-widest font-medium">
-            <a href="#who" className="hover:text-white transition-colors duration-150">Who Should Attend</a>
-            <a href="#agenda" className="hover:text-white transition-colors duration-150">Schedule</a>
-          </div>
+            {/* Left nav */}
+            <div className="hidden md:flex items-center gap-7 text-[11px] text-white/45 uppercase tracking-widest font-medium">
+              <a href="#who" className="hover:text-white transition-colors duration-150">Who Should Attend</a>
+              <a href="#agenda" className="hover:text-white transition-colors duration-150">Schedule</a>
+            </div>
 
-          {/* Center logo */}
-          <div className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-white font-bold text-sm tracking-tight uppercase whitespace-nowrap">
-              Forge <span className="text-[#B69556]">/</span> ForFond
-            </span>
-          </div>
-
-          {/* Right nav */}
-          <div className="hidden md:flex items-center gap-5 ml-auto">
-            <a
-              href="#faq"
-              className="text-[11px] text-white/45 uppercase tracking-widest font-medium hover:text-white transition-colors duration-150"
-            >
-              FAQ
+            {/* Center logo */}
+            <a href="#top" className="absolute left-1/2 -translate-x-1/2 flex items-center">
+              {/* Drop the brand asset at public/forge-logo.png to replace the wordmark */}
+              <img
+                src="/forge-logo.png"
+                alt="Forge by ForFond"
+                className="h-8 w-auto object-contain"
+                onError={(e) => {
+                  // Fallback to wordmark if the asset isn't present yet
+                  const el = e.currentTarget;
+                  el.style.display = "none";
+                  const sib = el.nextElementSibling as HTMLElement | null;
+                  if (sib) sib.style.display = "inline";
+                }}
+              />
+              <span
+                className="text-white font-bold text-sm tracking-tight uppercase whitespace-nowrap"
+                style={{ display: "none" }}
+              >
+                Forge <span className="text-[#B69556]">/</span> ForFond
+              </span>
             </a>
+
+            {/* Right nav */}
+            <div className="hidden md:flex items-center gap-5 ml-auto">
+              <a
+                href="#faq"
+                className="text-[11px] text-white/45 uppercase tracking-widest font-medium hover:text-white transition-colors duration-150"
+              >
+                FAQ
+              </a>
+              <a
+                href={REGISTER}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-semibold uppercase tracking-widest px-4 py-2 border border-white/25 text-white/80 hover:bg-[#B69556] hover:border-[#B69556] hover:text-black transition-all duration-200"
+              >
+                Register
+              </a>
+            </div>
+
+            {/* Mobile register */}
             <a
-              href={LUMA}
+              href={REGISTER}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] font-semibold uppercase tracking-widest px-4 py-2 border border-white/25 text-white/80 hover:bg-[#B69556] hover:border-[#B69556] hover:text-black transition-all duration-200"
+              className="md:hidden ml-auto text-[11px] font-semibold uppercase tracking-widest px-4 py-2 border border-white/25 text-white/80 hover:bg-[#B69556] hover:border-[#B69556] hover:text-black transition-all duration-200"
             >
               Register
             </a>
           </div>
-
-          {/* Mobile register */}
-          <a
-            href={LUMA}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="md:hidden ml-auto text-[11px] font-semibold uppercase tracking-widest px-4 py-2 border border-white/25 text-white/80 hover:bg-[#B69556] hover:border-[#B69556] hover:text-black transition-all duration-200"
-          >
-            Register
-          </a>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }

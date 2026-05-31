@@ -4,7 +4,6 @@ import HeroText from "@/components/Hero";
 import ApplyInvite from "@/components/ApplyInvite";
 import Countdown from "@/components/Countdown";
 import HardTruth from "@/components/HardTruth";
-import PatternDivider from "@/components/PatternDivider";
 import InsideForge from "@/components/InsideForge";
 import Chatroom from "@/components/Chatroom";
 import ForgeOrbit from "@/components/ForgeOrbit";
@@ -19,6 +18,8 @@ export default function Home() {
     <>
       <ScrollToTop />
       <SiteHeader />
+
+      <div id="top" />
 
       {/* 1. Hook — the headline question */}
       <ScrollReveal>
@@ -38,10 +39,7 @@ export default function Home() {
         <HardTruth />
       </ScrollReveal>
 
-      {/* 5. Visual break */}
-      <PatternDivider />
-
-      {/* 6. The value — the 3 sessions (stacking cards) */}
+      {/* 5. The value — the 3 sessions (stacking cards) */}
       <ScrollReveal delay={60}>
         <InsideForge />
       </ScrollReveal>

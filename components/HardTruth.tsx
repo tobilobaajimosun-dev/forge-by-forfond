@@ -3,91 +3,106 @@
 import { useEffect, useRef, useState } from "react";
 import SectionLabel from "@/components/SectionLabel";
 
-// The story, line by line. `g` marks gold-emphasized fragments.
-type Frag = { t: string; g?: boolean };
-const story: Frag[][] = [
-  [{ t: "Every founder starts with a vision." }],
-  [
-    { t: "But somewhere between the first hire and the first real contract, " },
-    { t: "the cracks begin to show.", g: true },
-  ],
-  [
-    { t: "The records " },
-    { t: "never properly kept.", g: true },
-    { t: " The taxes " },
-    { t: "never strategically managed.", g: true },
-    { t: " The payroll held together by goodwill." },
-  ],
-  [
-    { t: "Growth does not fix these things. " },
-    { t: "It exposes them.", g: true },
-  ],
-  [
-    { t: "And by the time you feel it, the cost of fixing is " },
-    { t: "far greater", g: true },
-    { t: " than the cost of building right." },
-  ],
-  [
-    { t: "Forge exists for the founders who " },
-    { t: "refuse to find out the hard way.", g: true },
-  ],
+// Story as word tokens. `br: 2` = paragraph break, `g` = gold emphasis.
+type Tok = { w: string; g?: boolean; br?: number };
+
+const tokens: Tok[] = [
+  { w: "Every" }, { w: "founder" }, { w: "starts" }, { w: "with" }, { w: "a" }, { w: "vision." , br: 2 },
+
+  { w: "But" }, { w: "somewhere" }, { w: "between" }, { w: "the" }, { w: "first" }, { w: "hire" },
+  { w: "and" }, { w: "the" }, { w: "first" }, { w: "real" }, { w: "contract," },
+  { w: "the", g: true }, { w: "cracks", g: true }, { w: "begin", g: true }, { w: "to", g: true }, { w: "show.", g: true, br: 2 },
+
+  { w: "The" }, { w: "records" }, { w: "never", g: true }, { w: "kept." , g: true }, { w: "The" }, { w: "taxes" },
+  { w: "never", g: true }, { w: "managed.", g: true }, { w: "The" }, { w: "payroll" }, { w: "held" }, { w: "together" }, { w: "by" }, { w: "goodwill." , br: 2 },
+
+  { w: "Growth" }, { w: "doesn’t" }, { w: "fix" }, { w: "this." },
+  { w: "It", g: true }, { w: "exposes", g: true }, { w: "it.", g: true, br: 2 },
+
+  { w: "Forge" }, { w: "is" }, { w: "for" }, { w: "the" }, { w: "founders" }, { w: "who" },
+  { w: "build", g: true }, { w: "right", g: true }, { w: "—", g: true }, { w: "from", g: true }, { w: "the", g: true }, { w: "start.", g: true },
 ];
 
-function StoryLine({ frags, index }: { frags: Frag[]; index: number }) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const [vis, setVis] = useState(false);
+export default function HardTruth() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [n, setN] = useState(0);
+  const [started, setStarted] = useState(false);
+  const done = n >= tokens.length;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setN(tokens.length);
+      return;
+    }
     const obs = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          setVis(true);
+          setStarted(true);
           obs.disconnect();
         }
       },
-      { threshold: 0.6 }
+      { threshold: 0.4 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
-  return (
-    <p
-      ref={ref}
-      className="transition-all duration-700 ease-out"
-      style={{
-        fontSize: "clamp(28px, 4.2vw, 56px)",
-        lineHeight: 1.18,
-        fontWeight: 600,
-        letterSpacing: "-0.02em",
-        opacity: vis ? 1 : 0.12,
-        filter: vis ? "blur(0px)" : "blur(5px)",
-        transform: vis ? "translateY(0)" : "translateY(12px)",
-        transitionDelay: `${index * 40}ms`,
-      }}
-    >
-      {frags.map((f, i) => (
-        <span key={i} style={{ color: f.g ? "#B69556" : vis ? "#fff" : "rgba(255,255,255,0.5)" }}>
-          {f.t}
-        </span>
-      ))}
-    </p>
-  );
-}
+  useEffect(() => {
+    if (!started || done) return;
+    const t = tokens[n];
+    // Pause a little longer at paragraph breaks
+    const delay = t?.br ? 260 : 60;
+    const id = setTimeout(() => setN((v) => v + 1), delay);
+    return () => clearTimeout(id);
+  }, [started, n, done]);
 
-export default function HardTruth() {
   return (
-    <section className="bg-[#161616] px-6 md:px-16 py-28 md:py-40">
+    <section ref={ref} className="bg-[#161616] px-6 md:px-16 py-28 md:py-40">
       <div className="max-w-5xl mx-auto">
         <SectionLabel>The Hard Truth</SectionLabel>
 
-        <div className="space-y-8 md:space-y-12 mt-6">
-          {story.map((line, i) => (
-            <StoryLine key={i} frags={line} index={i} />
-          ))}
-        </div>
+        <p
+          className="mt-6"
+          style={{
+            fontSize: "clamp(26px, 3.8vw, 50px)",
+            lineHeight: 1.32,
+            fontWeight: 500,
+            letterSpacing: "-0.015em",
+          }}
+        >
+          {tokens.map((t, i) => {
+            const shown = i < n;
+            return (
+              <span key={i}>
+                <span
+                  style={{
+                    color: shown ? (t.g ? "#B69556" : "#fff") : "transparent",
+                    transition: "color 200ms ease",
+                  }}
+                >
+                  {t.w}
+                </span>
+                {shown && t.br ? <><br /><br /></> : " "}
+              </span>
+            );
+          })}
+          {/* Typewriter caret */}
+          {!done && (
+            <span
+              className="caret-blink"
+              style={{
+                display: "inline-block",
+                width: "3px",
+                height: "0.95em",
+                background: "#B69556",
+                transform: "translateY(0.12em)",
+              }}
+            />
+          )}
+        </p>
       </div>
     </section>
   );

@@ -1,21 +1,21 @@
 const sessions = [
   {
     number: "01",
-    tag: "Growth Mindset",
-    title: "Hacking Growth in the Current Global Context",
-    body: "The African business landscape has shifted. This session cuts through the noise — what global headwinds mean for SMEs, where the real opportunities are in 2026, and how to build a practical expansion plan around smart pivots, the right partnerships, and strategic alliances that actually move the needle.",
+    tag: "Growth",
+    title: "Where to grow in 2026",
+    body: "The market has shifted. We map where the real opportunities are, and how to expand without overreaching.",
   },
   {
     number: "02",
-    tag: "Growth Engines",
-    title: "The Unglamorous Engines Behind Every Scaling Business",
-    body: "Nobody scales on vision alone. This session covers the structures most founders ignore until it's too late — company setup, operational systems, compliance, people management, and corporate governance. The unglamorous work that quietly determines whether your business is built to carry the weight of growth, or broken by it.",
+    tag: "Operations",
+    title: "Systems that hold under pressure",
+    body: "Structure, compliance, operations, people. The quiet work that decides whether growth lifts your business or breaks it.",
   },
   {
     number: "03",
-    tag: "Personal Finance",
-    title: "Unbundling the Myths",
-    body: "Your business is growing. Your personal finances should be too. This session covers how to pay yourself correctly, permanently separate business and personal money, build personal wealth alongside your company, and protect everything you are building — pension, insurance, and beyond.",
+    tag: "Finance",
+    title: "Pay yourself properly",
+    body: "Separate your money, build personal wealth, and protect it — pension, insurance, and everything in between.",
   },
 ];
 
@@ -38,16 +38,16 @@ export default function InsideForge() {
           <SectionLabel>Inside Forge</SectionLabel>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <h2
-              className="font-bold text-white leading-[0.95] tracking-tight"
-              style={{ fontSize: "clamp(40px, 6vw, 80px)" }}
+              className="font-semibold text-white leading-[0.98] tracking-tight"
+              style={{ fontSize: "clamp(38px, 5.5vw, 72px)" }}
             >
-              What You Will
+              What you&rsquo;ll
               <br />
-              Walk Away With
+              walk away with
             </h2>
             <p className="text-white/40 text-base font-light max-w-sm md:text-right">
-              One day. Three intentional sessions. Expert conversations tailored
-              to the real challenges businesses face.
+              One day. Three sessions. Real answers to the
+              things that actually keep founders up at night.
             </p>
           </div>
         </div>
@@ -90,10 +90,10 @@ export default function InsideForge() {
 
                   {/* Title + body */}
                   <div>
-                    <h3 className="text-white font-bold text-2xl md:text-3xl leading-tight tracking-tight mb-5">
+                    <h3 className="text-white font-semibold text-2xl md:text-3xl leading-tight tracking-tight mb-5">
                       {s.title}
                     </h3>
-                    <p className="text-white/50 text-base font-light leading-relaxed max-w-2xl">
+                    <p className="text-white/50 text-lg font-light leading-relaxed max-w-2xl">
                       {s.body}
                     </p>
                   </div>
