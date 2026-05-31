@@ -28,9 +28,9 @@ export default function HeroText() {
         {/* Supporting copy + CTA row */}
         <div className="flex flex-col md:flex-row md:items-end gap-10 md:gap-20">
           <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-            Growth doesn&apos;t fix weak systems &mdash; it exposes them. Forge
-            is a curated one-day experience for founders who are done patching
-            cracks and ready to build for scale.
+            Growth does not fix weak systems &mdash; it exposes them. Forge is
+            a curated business experience for the founders who refuse to find
+            out the hard way.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">

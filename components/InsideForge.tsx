@@ -7,8 +7,8 @@ const sessions = [
   },
   {
     number: "02",
-    tag: "Governance & Operations",
-    title: "The Unglamorous Engines Behind Every Scaling Business",
+    tag: "Growth Engines",
+    title: "Governance & Operations: The Unglamorous Engines Behind Every Scaling Business",
     body: "Nobody scales on vision alone. This session covers the structures most founders ignore until it's too late — company setup, operational systems, compliance, people management, and corporate governance. The unglamorous work that quietly determines whether your business is built to carry the weight of growth, or broken by it.",
   },
   {

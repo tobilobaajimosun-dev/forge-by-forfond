@@ -4,6 +4,7 @@ import HeroText from "@/components/Hero";
 import HardTruth from "@/components/HardTruth";
 import InsideForge from "@/components/InsideForge";
 import Chatroom from "@/components/Chatroom";
+import Speakers from "@/components/Speakers";
 import MadeForYou from "@/components/MadeForYou";
 import ClosingCTA from "@/components/ClosingCTA";
 import Register from "@/components/Register";
@@ -23,9 +24,11 @@ export default function Home() {
       <InsideForge />
       {/* 5. The Chatroom — expert consultations */}
       <Chatroom />
-      {/* 6. Made for You If — eligibility */}
+      {/* 6. Speakers / Expert Consultants */}
+      <Speakers />
+      {/* 7. Made for You If — eligibility */}
       <MadeForYou />
-      {/* 7. Closing statement + event details */}
+      {/* 8. Closing statement + event details */}
       <ClosingCTA />
       {/* 8. Registration form */}
       <Register />

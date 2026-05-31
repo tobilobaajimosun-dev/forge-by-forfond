@@ -5,6 +5,9 @@ export default function ClosingCTA() {
 
         {/* Big closing statement */}
         <div className="mb-20 md:mb-28">
+          <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-8">
+            The Question Is Not If
+          </p>
           <h2
             className="font-black text-white leading-[0.92] tracking-tight mb-6"
             style={{ fontSize: "clamp(40px, 7vw, 96px)" }}
