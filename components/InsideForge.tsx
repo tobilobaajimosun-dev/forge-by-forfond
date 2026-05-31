@@ -35,7 +35,7 @@ export default function InsideForge() {
           </p>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <h2
-              className="font-black text-white leading-[0.95] tracking-tight"
+              className="font-bold text-white leading-[0.95] tracking-tight"
               style={{ fontSize: "clamp(40px, 6vw, 80px)" }}
             >
               What You Will
@@ -58,7 +58,7 @@ export default function InsideForge() {
               {/* Number */}
               <div className="flex md:flex-col gap-4 md:gap-2">
                 <span
-                  className="font-black text-white/10 leading-none"
+                  className="font-bold text-white/10 leading-none"
                   style={{ fontSize: "clamp(48px, 6vw, 80px)" }}
                 >
                   {s.number}
@@ -69,7 +69,7 @@ export default function InsideForge() {
               </div>
 
               {/* Title */}
-              <h3 className="text-white font-black text-xl md:text-2xl leading-tight tracking-tight self-center">
+              <h3 className="text-white font-bold text-xl md:text-2xl leading-tight tracking-tight self-center">
                 {s.title}
               </h3>
 

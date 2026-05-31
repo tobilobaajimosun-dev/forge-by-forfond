@@ -52,7 +52,7 @@ export default function FAQ() {
               Questions
             </p>
             <h2
-              className="font-black text-white leading-[0.9] tracking-tight"
+              className="font-bold text-white leading-[0.9] tracking-tight"
               style={{ fontSize: "clamp(64px, 10vw, 120px)" }}
             >
               FAQ

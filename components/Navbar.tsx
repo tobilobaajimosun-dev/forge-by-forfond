@@ -12,7 +12,7 @@ export default function Navbar() {
 
         {/* Center logo — absolute so it's truly centered */}
         <div className="absolute left-1/2 -translate-x-1/2">
-          <span className="text-white font-black text-sm tracking-tight uppercase whitespace-nowrap">
+          <span className="text-white font-bold text-sm tracking-tight uppercase whitespace-nowrap">
             Forge <span className="text-[#B69556]">/</span> ForFond
           </span>
         </div>

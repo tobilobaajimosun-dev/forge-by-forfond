@@ -10,7 +10,7 @@ export default function HardTruth() {
 
         {/* Pull quote */}
         <blockquote
-          className="font-black text-white leading-[1.05] tracking-tight mb-16"
+          className="font-bold text-white leading-[1.05] tracking-tight mb-16"
           style={{ fontSize: "clamp(32px, 5vw, 72px)" }}
         >
           &ldquo;The thing that eventually breaks a growing business was often

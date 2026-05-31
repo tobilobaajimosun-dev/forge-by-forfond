@@ -139,7 +139,7 @@ export default function ForgeOrbit() {
             The Room
           </p>
           <h2
-            className="font-black text-white leading-[0.92] tracking-tight"
+            className="font-bold text-white leading-[0.92] tracking-tight"
             style={{ fontSize: "clamp(36px, 5vw, 64px)" }}
           >
             Built Around the Right Expertise
@@ -202,7 +202,7 @@ export default function ForgeOrbit() {
               boxShadow: "0 0 40px rgba(182,149,86,0.08)",
             }}
           >
-            <span className="text-white font-black text-lg leading-none tracking-tight">F</span>
+            <span className="text-white font-bold text-lg leading-none tracking-tight">F</span>
             <span className="text-[#B69556] text-[8px] font-semibold uppercase tracking-widest mt-1">Forge</span>
           </div>
 

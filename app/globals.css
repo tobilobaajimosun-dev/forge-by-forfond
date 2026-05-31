@@ -1,13 +1,26 @@
 @import "tailwindcss";
 
 /*
-  ES Rebond Grotesque TRIAL — drop your font files in /public/fonts/ and
-  uncomment the block below to activate.
+  Neue Montreal — drop your font files in /public/fonts/ and uncomment
+  the block below to activate. It will override Hanken Grotesk automatically.
 
 @font-face {
-  font-family: "ESRebondGrotesque";
-  src: url("/fonts/ESRebondGrotesque-Trial-Bold.woff2") format("woff2"),
-       url("/fonts/ESRebondGrotesque-Trial-Bold.otf") format("opentype");
+  font-family: "NeueMontreal";
+  src: url("/fonts/NeueMontreal-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NeueMontreal";
+  src: url("/fonts/NeueMontreal-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NeueMontreal";
+  src: url("/fonts/NeueMontreal-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -20,13 +33,14 @@
   --gold: #B69556;
 
   /*
-    Font stack:
-    1. ES Rebond Grotesque TRIAL (when files are added + @font-face uncommented)
-    2. SF Pro Display (Apple system font — renders on Mac/iOS automatically)
-    3. System sans fallbacks for Windows/Android
+    Display font: Hanken Grotesk via next/font (--font-display).
+    Drop-in for Neue Montreal: add files to /public/fonts/ and uncomment
+    the @font-face block above; "NeueMontreal" then wins the stack.
   */
-  --font-display: "ESRebondGrotesque", -apple-system, "SF Pro Display",
-    BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "NeueMontreal", var(--font-display), -apple-system,
+    "Helvetica Neue", Arial, sans-serif;
+  /* Body font: Geist via next/font (--font-body set by next/font) */
+  --font-text: var(--font-body), -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
 
 @theme inline {
@@ -39,34 +53,40 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Prevent horizontal scrollbar while sections slide in from the left */
+body {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-display);
+  font-family: var(--font-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Apply display font to all headings */
+/* Headings use the Neue-Montreal-style display font */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
-/* ── Scroll reveal ── */
+/* ── Scroll reveal — blur in + flow from left to right ── */
 .reveal-block {
   opacity: 0;
-  transform: translateY(32px);
-  filter: blur(6px);
+  transform: translateX(-44px);
+  filter: blur(8px);
   transition:
-    opacity 750ms cubic-bezier(0.23, 1, 0.32, 1),
-    transform 750ms cubic-bezier(0.23, 1, 0.32, 1),
-    filter 750ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity 800ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 800ms cubic-bezier(0.23, 1, 0.32, 1),
+    filter 800ms cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform, opacity, filter;
 }
 
 .reveal-block[data-visible="true"] {
   opacity: 1;
-  transform: translateY(0px);
+  transform: translateX(0px);
   filter: blur(0px);
 }
 

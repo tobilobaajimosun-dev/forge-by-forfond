@@ -55,7 +55,7 @@ export default function Countdown() {
               <div key={u.label} className="flex items-end gap-2 md:gap-3">
                 <div className="text-center">
                   <div
-                    className="font-black text-white tabular-nums leading-none"
+                    className="font-bold text-white tabular-nums leading-none"
                     style={{ fontSize: "clamp(40px, 7vw, 80px)" }}
                   >
                     {u.value}
@@ -66,7 +66,7 @@ export default function Countdown() {
                 </div>
                 {i < units.length - 1 && (
                   <span
-                    className="text-[#B69556] font-black pb-6 md:pb-8 opacity-60"
+                    className="text-[#B69556] font-bold pb-6 md:pb-8 opacity-60"
                     style={{ fontSize: "clamp(24px, 4vw, 48px)" }}
                   >
                     .

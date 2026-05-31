@@ -96,7 +96,7 @@ export default function Chatroom() {
 
           {/* Headline — each line has gold highlighter underneath */}
           <h2
-            className="font-black text-white leading-[1.05] tracking-tight shrink-0"
+            className="font-bold text-white leading-[1.05] tracking-tight shrink-0"
             style={{ fontSize: "clamp(36px, 5.5vw, 68px)" }}
           >
             <Highlight>Your Questions.</Highlight>

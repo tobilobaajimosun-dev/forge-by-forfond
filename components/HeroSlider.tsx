@@ -74,7 +74,7 @@ export default function HeroSlider() {
             Before
           </p>
           <p
-            className="text-white font-black leading-none tracking-tight"
+            className="text-white font-bold leading-none tracking-tight"
             style={{ fontSize: "clamp(28px, 4vw, 56px)" }}
           >
             Forge
@@ -119,7 +119,7 @@ export default function HeroSlider() {
             After
           </p>
           <p
-            className="text-white font-black leading-none tracking-tight"
+            className="text-white font-bold leading-none tracking-tight"
             style={{ fontSize: "clamp(28px, 4vw, 56px)" }}
           >
             Forge

@@ -60,7 +60,7 @@ export default function Speakers() {
               The Lineup
             </p>
             <h2
-              className="font-black text-white leading-[0.92] tracking-tight"
+              className="font-bold text-white leading-[0.92] tracking-tight"
               style={{
                 fontSize: "clamp(36px, 5vw, 64px)",
                 fontFamily:

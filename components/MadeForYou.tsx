@@ -38,7 +38,7 @@ export default function MadeForYou() {
 
         <div className="mb-16 md:mb-24">
           <h2
-            className="font-black text-white leading-[0.92] tracking-tight"
+            className="font-bold text-white leading-[0.92] tracking-tight"
             style={{ fontSize: "clamp(48px, 8vw, 110px)" }}
           >
             You Are
@@ -46,7 +46,7 @@ export default function MadeForYou() {
             Ambitious
           </h2>
           <h2
-            className="font-black leading-[0.92] tracking-tight"
+            className="font-bold leading-[0.92] tracking-tight"
             style={{
               fontSize: "clamp(48px, 8vw, 110px)",
               color: "transparent",

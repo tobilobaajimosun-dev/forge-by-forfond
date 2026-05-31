@@ -6,13 +6,13 @@ export default function Footer() {
         {/* Large centered logo */}
         <div className="text-center mb-12">
           <p
-            className="font-black text-white uppercase tracking-tight leading-none"
+            className="font-bold text-white uppercase tracking-tight leading-none"
             style={{ fontSize: "clamp(40px, 8vw, 96px)" }}
           >
             Forge
           </p>
           <p
-            className="font-black uppercase tracking-[0.15em] mt-1"
+            className="font-bold uppercase tracking-[0.15em] mt-1"
             style={{
               fontSize: "clamp(14px, 2vw, 22px)",
               color: "#B69556",

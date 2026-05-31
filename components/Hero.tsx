@@ -10,7 +10,7 @@ export default function HeroText() {
 
         {/* Display headline */}
         <h1
-          className="font-black text-white leading-[0.92] tracking-tight mb-10"
+          className="font-bold text-white leading-[0.92] tracking-tight mb-10"
           style={{ fontSize: "clamp(56px, 10vw, 130px)" }}
         >
           Built to Be
@@ -25,28 +25,13 @@ export default function HeroText() {
         {/* Divider */}
         <div className="w-full h-px bg-white/10 mb-10" />
 
-        {/* Supporting copy + CTA row */}
-        <div className="flex flex-col md:flex-row md:items-end gap-10 md:gap-20">
-          <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+        {/* Supporting copy */}
+        <div className="max-w-2xl">
+          <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed">
             Growth does not fix weak systems &mdash; it exposes them. Forge is
             a curated business experience for the founders who refuse to find
             out the hard way.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-            <a
-              href="#register"
-              className="inline-flex items-center justify-center bg-[#B69556] hover:bg-[#c9a96a] active:scale-[0.97] text-white font-semibold px-7 py-4 text-sm tracking-wide transition-all duration-150"
-            >
-              Reserve Your Seat
-            </a>
-            <a
-              href="#agenda"
-              className="inline-flex items-center justify-center border border-white/20 hover:border-white/50 active:scale-[0.97] text-white/70 hover:text-white font-semibold px-7 py-4 text-sm tracking-wide transition-all duration-150"
-            >
-              See the Agenda →
-            </a>
-          </div>
         </div>
 
         {/* Bottom metadata */}

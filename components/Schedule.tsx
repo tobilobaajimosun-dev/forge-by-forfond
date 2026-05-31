@@ -92,7 +92,7 @@ export default function Schedule() {
               June 13, 2026
             </p>
             <h2
-              className="font-black text-white leading-[0.92] tracking-tight"
+              className="font-bold text-white leading-[0.92] tracking-tight"
               style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
             >
               Full Schedule
