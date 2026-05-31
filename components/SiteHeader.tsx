@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const EVENT_DATE = new Date("2026-06-13T09:00:00+01:00");
-const LUMA = "https://luma.com/j2sbmjc7";
+const LUMA = "https://tally.so/r/ZjDaXA";
 
 function pad(n: number) {
   return String(n).padStart(2, "0");

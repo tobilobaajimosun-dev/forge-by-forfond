@@ -1,121 +1,93 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import SectionLabel from "@/components/SectionLabel";
 
-const QUOTE =
-  "The thing that eventually breaks a growing business was often broken long before the growth came.";
+// The story, line by line. `g` marks gold-emphasized fragments.
+type Frag = { t: string; g?: boolean };
+const story: Frag[][] = [
+  [{ t: "Every founder starts with a vision." }],
+  [
+    { t: "But somewhere between the first hire and the first real contract, " },
+    { t: "the cracks begin to show.", g: true },
+  ],
+  [
+    { t: "The records " },
+    { t: "never properly kept.", g: true },
+    { t: " The taxes " },
+    { t: "never strategically managed.", g: true },
+    { t: " The payroll held together by goodwill." },
+  ],
+  [
+    { t: "Growth does not fix these things. " },
+    { t: "It exposes them.", g: true },
+  ],
+  [
+    { t: "And by the time you feel it, the cost of fixing is " },
+    { t: "far greater", g: true },
+    { t: " than the cost of building right." },
+  ],
+  [
+    { t: "Forge exists for the founders who " },
+    { t: "refuse to find out the hard way.", g: true },
+  ],
+];
 
-const words = QUOTE.split(" ");
+function StoryLine({ frags, index }: { frags: Frag[]; index: number }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [vis, setVis] = useState(false);
 
-export default function HardTruth() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(0); // number of words shown
-  const [started, setStarted] = useState(false);
-  const [done, setDone] = useState(false);
-
-  // Trigger when section scrolls into view
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setRevealed(words.length);
-      setDone(true);
-      return;
-    }
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVis(true);
           obs.disconnect();
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.6 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
-  // Type words in one by one
-  useEffect(() => {
-    if (!started) return;
-    if (revealed >= words.length) {
-      setDone(true);
-      return;
-    }
-    const id = setTimeout(() => setRevealed((n) => n + 1), 95);
-    return () => clearTimeout(id);
-  }, [started, revealed]);
-
   return (
-    <section ref={ref} className="bg-[#161616] px-6 md:px-16 py-24 md:py-36">
-      <div className="max-w-6xl mx-auto">
+    <p
+      ref={ref}
+      className="transition-all duration-700 ease-out"
+      style={{
+        fontSize: "clamp(28px, 4.2vw, 56px)",
+        lineHeight: 1.18,
+        fontWeight: 600,
+        letterSpacing: "-0.02em",
+        opacity: vis ? 1 : 0.12,
+        filter: vis ? "blur(0px)" : "blur(5px)",
+        transform: vis ? "translateY(0)" : "translateY(12px)",
+        transitionDelay: `${index * 40}ms`,
+      }}
+    >
+      {frags.map((f, i) => (
+        <span key={i} style={{ color: f.g ? "#B69556" : vis ? "#fff" : "rgba(255,255,255,0.5)" }}>
+          {f.t}
+        </span>
+      ))}
+    </p>
+  );
+}
 
-        {/* Eyebrow */}
-        <p className="flex items-center gap-3 text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-12">
-          <span className="inline-block w-8 h-px bg-[#B69556]/60" />
-          The Hard Truth
-        </p>
+export default function HardTruth() {
+  return (
+    <section className="bg-[#161616] px-6 md:px-16 py-28 md:py-40">
+      <div className="max-w-5xl mx-auto">
+        <SectionLabel>The Hard Truth</SectionLabel>
 
-        {/* Word-by-word reveal headline with caret */}
-        <h2
-          className="font-bold text-white leading-[1.05] tracking-tight mb-16 min-h-[1.05em]"
-          style={{ fontSize: "clamp(32px, 5vw, 72px)" }}
-        >
-          <span aria-hidden className="sr-only">{QUOTE}</span>
-          <span aria-hidden>&ldquo;</span>
-          {words.map((w, i) => (
-            <span
-              key={i}
-              className="transition-all duration-300"
-              style={{
-                opacity: i < revealed ? 1 : 0,
-                filter: i < revealed ? "blur(0px)" : "blur(8px)",
-                color: i < revealed ? "#fff" : "transparent",
-              }}
-            >
-              {w}
-              {i < words.length - 1 ? " " : ""}
-            </span>
+        <div className="space-y-8 md:space-y-12 mt-6">
+          {story.map((line, i) => (
+            <StoryLine key={i} frags={line} index={i} />
           ))}
-          <span aria-hidden>{done ? "”" : ""}</span>
-          {/* Blinking caret while typing */}
-          {!done && (
-            <span
-              className="inline-block align-baseline ml-1 caret-blink"
-              style={{
-                width: "0.07em",
-                height: "0.92em",
-                background: "#B69556",
-                transform: "translateY(0.06em)",
-              }}
-            />
-          )}
-        </h2>
-
-        <div className="w-full h-px bg-white/10 mb-16" />
-
-        {/* Body copy — two columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-          <p className="text-white/45 text-lg font-light leading-relaxed">
-            Most founders discover too late that the records never properly
-            kept, the taxes never strategically managed, the payroll systems
-            never structured, the HR foundations never built &mdash; these are
-            not problems growth solves.
-          </p>
-          <div>
-            <p className="text-white/45 text-lg font-light leading-relaxed mb-8">
-              They are the fault lines growth reveals. And by then, the cost of
-              fixing them is far greater than the cost of building them right
-              the first time.
-            </p>
-            <p className="text-white font-semibold text-lg leading-relaxed">
-              Forge by ForFond was created for the founders who intend to build
-              right, from the beginning.
-            </p>
-          </div>
         </div>
-
       </div>
     </section>
   );

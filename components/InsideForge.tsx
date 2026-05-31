@@ -19,6 +19,8 @@ const sessions = [
   },
 ];
 
+import SectionLabel from "@/components/SectionLabel";
+
 // Card surface tones — slightly different so stacked cards read as distinct layers
 const cardBg = ["#2e2e2e", "#333031", "#383031"];
 
@@ -33,9 +35,7 @@ export default function InsideForge() {
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
-          <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-            Inside Forge
-          </p>
+          <SectionLabel>Inside Forge</SectionLabel>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <h2
               className="font-bold text-white leading-[0.95] tracking-tight"

@@ -1,5 +1,7 @@
 "use client";
 
+import SectionLabel from "@/components/SectionLabel";
+
 // 9 expertise areas positioned on a circle (viewBox 560×560, center 280,280, r=210).
 // angle_i = -90 + i*40 degrees.
 const items = [
@@ -51,9 +53,9 @@ export default function ForgeOrbit() {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-4">
-            The Room
-          </p>
+          <div className="flex justify-center mb-4">
+            <SectionLabel>The Room</SectionLabel>
+          </div>
           <h2
             className="font-bold text-white leading-[0.95] tracking-tight"
             style={{ fontSize: "clamp(36px, 5vw, 64px)" }}

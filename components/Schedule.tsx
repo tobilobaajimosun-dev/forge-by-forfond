@@ -1,3 +1,5 @@
+import SectionLabel from "@/components/SectionLabel";
+
 const sessions = [
   {
     time: "9:00 AM",
@@ -80,9 +82,7 @@ export default function Schedule() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-0">
           <div>
-            <p className="text-[#8a6d33] text-xs font-semibold uppercase tracking-[0.25em] mb-4">
-              June 13, 2026
-            </p>
+            <SectionLabel dark>June 13, 2026</SectionLabel>
             <h2
               className="font-bold text-[#1a1a1a] leading-[0.92] tracking-tight"
               style={{ fontSize: "clamp(40px, 6vw, 72px)" }}

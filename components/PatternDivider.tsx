@@ -3,72 +3,71 @@
 import { useEffect, useRef } from "react";
 
 type Glyph = {
-  x: number; // % position
-  y: number; // % position
-  type: "triangle" | "square" | "circle" | "wave" | "chevron" | "lines" | "dots";
+  x: number; // % position (center)
+  y: number; // % position (center)
+  type: "bar" | "arrow" | "peak" | "chevron-up";
   color: string;
-  size: number;
+  size: number; // scale multiplier
   rot: number;
 };
 
 const GOLD = "#B69556";
 const GOLD_DIM = "#7a6238";
-const WHITE = "rgba(255,255,255,0.35)";
+const WHITE = "rgba(255,255,255,0.30)";
 
+// A growth ramp: ascending bars left→right, an upward arrow, ascending peaks.
+// Big, recognizable shapes that read as "scale / growth".
 const glyphs: Glyph[] = [
-  { x: 4, y: 55, type: "triangle", color: GOLD, size: 1.0, rot: 0 },
-  { x: 9, y: 40, type: "square", color: GOLD_DIM, size: 0.8, rot: 8 },
-  { x: 13, y: 60, type: "circle", color: WHITE, size: 0.5, rot: 0 },
-  { x: 17, y: 50, type: "triangle", color: GOLD_DIM, size: 0.7, rot: 0 },
-  { x: 21, y: 52, type: "lines", color: WHITE, size: 0.9, rot: 0 },
-  { x: 26, y: 38, type: "square", color: GOLD, size: 0.7, rot: 0 },
-  { x: 30, y: 48, type: "wave", color: GOLD, size: 1.0, rot: 0 },
-  { x: 35, y: 56, type: "dots", color: WHITE, size: 0.8, rot: 0 },
-  { x: 40, y: 44, type: "chevron", color: GOLD, size: 0.9, rot: 0 },
-  { x: 44, y: 58, type: "square", color: GOLD_DIM, size: 0.7, rot: 6 },
-  { x: 49, y: 46, type: "triangle", color: GOLD, size: 1.1, rot: 0 },
-  { x: 54, y: 54, type: "wave", color: WHITE, size: 0.9, rot: 0 },
-  { x: 58, y: 40, type: "dots", color: GOLD, size: 0.7, rot: 0 },
-  { x: 62, y: 56, type: "triangle", color: GOLD_DIM, size: 0.7, rot: 0 },
-  { x: 66, y: 48, type: "square", color: GOLD, size: 0.8, rot: 4 },
-  { x: 70, y: 44, type: "lines", color: GOLD, size: 0.9, rot: 0 },
-  { x: 74, y: 58, type: "triangle", color: GOLD_DIM, size: 0.7, rot: 0 },
-  { x: 78, y: 46, type: "chevron", color: WHITE, size: 0.8, rot: 0 },
-  { x: 82, y: 52, type: "wave", color: GOLD, size: 1.0, rot: 0 },
-  { x: 86, y: 40, type: "square", color: GOLD_DIM, size: 0.8, rot: 8 },
-  { x: 91, y: 50, type: "triangle", color: GOLD, size: 1.1, rot: 0 },
-  { x: 96, y: 48, type: "circle", color: GOLD, size: 0.5, rot: 0 },
+  // Ascending bar chart (growth) — bars get taller toward the right
+  { x: 6, y: 64, type: "bar", color: GOLD_DIM, size: 0.55, rot: 0 },
+  { x: 11, y: 60, type: "bar", color: GOLD_DIM, size: 0.72, rot: 0 },
+  { x: 16, y: 55, type: "bar", color: GOLD, size: 0.9, rot: 0 },
+  { x: 21, y: 48, type: "bar", color: GOLD, size: 1.12, rot: 0 },
+  { x: 26, y: 40, type: "bar", color: GOLD, size: 1.36, rot: 0 },
+  // Upward arrow shooting up out of the chart
+  { x: 34, y: 42, type: "arrow", color: WHITE, size: 1.3, rot: 0 },
+  // Ascending mountain peaks (scaling)
+  { x: 46, y: 60, type: "peak", color: GOLD_DIM, size: 0.8, rot: 0 },
+  { x: 53, y: 50, type: "peak", color: GOLD, size: 1.1, rot: 0 },
+  { x: 60, y: 38, type: "peak", color: GOLD, size: 1.45, rot: 0 },
+  // Up-chevrons climbing
+  { x: 72, y: 58, type: "chevron-up", color: WHITE, size: 0.9, rot: 0 },
+  { x: 77, y: 48, type: "chevron-up", color: GOLD, size: 1.1, rot: 0 },
+  { x: 82, y: 38, type: "chevron-up", color: GOLD, size: 1.3, rot: 0 },
+  // Second ascending arrow at the far right
+  { x: 92, y: 44, type: "arrow", color: GOLD, size: 1.2, rot: 0 },
 ];
 
 function GlyphShape({ g }: { g: Glyph }) {
   const s = g.size;
-  const common = { stroke: g.color, fill: "none", strokeWidth: 3, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   switch (g.type) {
-    case "triangle":
-      return <polygon points={`${30 * s},0 ${60 * s},${52 * s} 0,${52 * s}`} fill={g.color} />;
-    case "square":
-      return <rect width={44 * s} height={44 * s} rx={6} fill={g.color} />;
-    case "circle":
-      return <circle cx={14 * s} cy={14 * s} r={12 * s} fill={g.color} />;
-    case "wave":
-      return <path d={`M0,${20 * s} Q${20 * s},0 ${40 * s},${20 * s} Q${60 * s},${40 * s} ${80 * s},${20 * s}`} {...common} />;
-    case "chevron":
-      return <path d={`M0,${40 * s} L${24 * s},0 L${48 * s},${40 * s}`} {...common} />;
-    case "lines":
+    case "bar":
+      // Vertical growth bar, anchored bottom
+      return <rect x={0} y={0} width={26} height={90 * s} rx={5} fill={g.color} />;
+    case "arrow": {
+      const u = 70 * s;
       return (
-        <g {...common}>
-          <line x1={0} y1={0} x2={24 * s} y2={52 * s} />
-          <line x1={14 * s} y1={0} x2={38 * s} y2={52 * s} />
-          <line x1={28 * s} y1={0} x2={52 * s} y2={52 * s} />
+        <g stroke={g.color} fill="none" strokeWidth={7} strokeLinecap="round" strokeLinejoin="round">
+          {/* shaft */}
+          <line x1={u * 0.1} y1={u} x2={u * 0.9} y2={u * 0.12} />
+          {/* head */}
+          <polyline points={`${u * 0.5},${u * 0.06} ${u * 0.92},${u * 0.08} ${u * 0.9},${u * 0.5}`} />
         </g>
       );
-    case "dots":
+    }
+    case "peak":
+      // Filled mountain/triangle
+      return <polygon points={`${42 * s},0 ${84 * s},${72 * s} 0,${72 * s}`} fill={g.color} />;
+    case "chevron-up":
       return (
-        <g fill={g.color}>
-          <circle cx={8 * s} cy={8 * s} r={6 * s} />
-          <circle cx={28 * s} cy={8 * s} r={6 * s} />
-          <circle cx={48 * s} cy={8 * s} r={6 * s} />
-        </g>
+        <path
+          d={`M0,${36 * s} L${30 * s},0 L${60 * s},${36 * s}`}
+          stroke={g.color}
+          fill="none"
+          strokeWidth={7}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       );
   }
 }
@@ -146,7 +145,7 @@ export default function PatternDivider() {
     <div
       ref={containerRef}
       className="relative w-full overflow-hidden cursor-crosshair"
-      style={{ height: "200px", background: "#161616" }}
+      style={{ height: "260px", background: "#161616" }}
     >
       {glyphs.map((g, i) => (
         <div
@@ -160,7 +159,7 @@ export default function PatternDivider() {
             willChange: "transform",
           }}
         >
-          <svg width={70 * g.size} height={70 * g.size} viewBox={`0 0 ${70 * g.size} ${70 * g.size}`} style={{ overflow: "visible" }}>
+          <svg width={90 * g.size} height={90 * g.size} viewBox={`0 0 ${90 * g.size} ${90 * g.size}`} style={{ overflow: "visible" }}>
             <GlyphShape g={g} />
           </svg>
         </div>

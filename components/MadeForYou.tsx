@@ -1,3 +1,6 @@
+import HalftoneDots from "@/components/HalftoneDots";
+import SectionLabel from "@/components/SectionLabel";
+
 const criteria = [
   {
     no: "01",
@@ -28,88 +31,67 @@ const criteria = [
 
 export default function MadeForYou() {
   return (
-    <section id="who" className="bg-[#1a1a1a] px-6 md:px-16 py-24 md:py-36">
+    <section id="who" className="bg-[#ece8df] px-6 md:px-16 py-24 md:py-32">
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 mb-16 md:mb-24">
-          <div>
-            <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-              Who This Is For
-            </p>
-            <h2
-              className="font-bold text-white leading-[0.95] tracking-tight"
-              style={{ fontSize: "clamp(40px, 6vw, 78px)" }}
-            >
-              You&rsquo;re Ambitious
-              &mdash; and You Know
-              It&rsquo;s Time
-            </h2>
-          </div>
-          <div className="md:pt-4 md:self-end">
-            <p className="text-white/45 text-lg font-light leading-relaxed">
-              Forge isn&rsquo;t for everyone, and that&rsquo;s the point. It&rsquo;s
-              built for a specific kind of founder — one who is serious about
-              building something that lasts. If any of these sound like you,
-              you belong in the room.
-            </p>
-          </div>
+        {/* Header — Column style */}
+        <div className="mb-8">
+          <SectionLabel dark>Who This Is For</SectionLabel>
+          <h2
+            className="font-bold text-[#1a1a1a] leading-[0.98] tracking-tight max-w-3xl"
+            style={{ fontSize: "clamp(34px, 5vw, 64px)" }}
+          >
+            You&rsquo;re ambitious &mdash; and you know it&rsquo;s time.
+          </h2>
         </div>
 
-        {/* Criteria — 2-col card grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06] border border-white/[0.06]">
+        {/* Halftone dots band — interactive */}
+        <div className="rounded-2xl overflow-hidden border border-black/[0.08] mb-14">
+          <HalftoneDots text="AMBITIOUS" height={300} bg="#e7e2d6" dot="#1c1c1c" accent="#B69556" />
+        </div>
+
+        {/* Intro line */}
+        <p className="text-black/55 text-lg font-light leading-relaxed max-w-2xl mb-14">
+          Forge isn&rsquo;t for everyone, and that&rsquo;s the point. It&rsquo;s built
+          for a specific kind of founder — one who is serious about building
+          something that lasts. If any of these sound like you, you belong in the room.
+        </p>
+
+        {/* Criteria — clean rows on light bg */}
+        <div className="border-t border-black/10">
           {criteria.map((c) => (
             <div
               key={c.no}
-              className="bg-[#1a1a1a] p-8 md:p-10 hover:bg-white/[0.015] transition-colors duration-200 group"
+              className="grid grid-cols-[56px_1fr] md:grid-cols-[80px_1fr_1.2fr] gap-5 md:gap-12 py-8 border-b border-black/10 group"
             >
-              <div className="flex items-start gap-5">
-                <span
-                  className="font-bold leading-none shrink-0"
-                  style={{ fontSize: "clamp(28px, 3vw, 40px)", color: "rgba(182,149,86,0.5)" }}
-                >
-                  {c.no}
-                </span>
-                <div>
-                  <h3 className="text-white font-semibold text-lg leading-snug mb-3">
-                    {c.title}
-                  </h3>
-                  <p className="text-white/45 text-base font-light leading-relaxed">
-                    {c.body}
-                  </p>
-                </div>
-              </div>
+              <span
+                className="font-bold leading-none"
+                style={{ fontSize: "clamp(24px, 2.6vw, 36px)", color: "rgba(138,109,51,0.7)" }}
+              >
+                {c.no}
+              </span>
+              <h3 className="text-[#1a1a1a] font-semibold text-lg md:text-xl leading-snug self-center">
+                {c.title}
+              </h3>
+              <p className="text-black/50 text-base font-light leading-relaxed self-center">
+                {c.body}
+              </p>
             </div>
           ))}
+        </div>
 
-          {/* Last cell — CTA to balance the 6-cell grid (5 criteria + 1 CTA) */}
-          <div className="relative bg-[#B69556] p-8 md:p-10 flex flex-col justify-between overflow-hidden">
-            {/* Floating 3D icon — calls attention to the section */}
-            <div
-              className="icon-float absolute -top-2 right-4 pointer-events-none select-none"
-              style={{
-                fontSize: "92px",
-                lineHeight: 1,
-                filter: "drop-shadow(0 12px 20px rgba(0,0,0,0.35))",
-              }}
-              aria-hidden
-            >
-              🎟️
-            </div>
-
-            <h3 className="relative text-black font-bold text-xl leading-snug max-w-[60%]">
-              Sound like you?
-            </h3>
-            <a
-              href="https://luma.com/j2sbmjc7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative mt-6 inline-flex items-center gap-2 text-black font-bold text-sm uppercase tracking-widest group/cta"
-            >
-              Request an Invite
-              <span className="group-hover/cta:translate-x-1 transition-transform duration-150">→</span>
-            </a>
-          </div>
+        {/* CTA */}
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <a
+            href="https://tally.so/r/ZjDaXA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 bg-[#1a1a1a] hover:bg-black text-white px-7 h-14 rounded-xl hover:rounded-[28px] transition-all duration-300 font-bold text-sm uppercase tracking-widest"
+          >
+            Request an Invite
+            <span className="group-hover:translate-x-1 transition-transform duration-150">→</span>
+          </a>
+          <p className="text-black/40 text-sm">Sound like you? Seats are limited and curated.</p>
         </div>
 
       </div>

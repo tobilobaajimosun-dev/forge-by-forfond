@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import SectionLabel from "@/components/SectionLabel";
 
 const EVENT_DATE = new Date("2026-06-13T09:00:00+01:00");
 
@@ -35,13 +36,11 @@ export default function Countdown() {
   ];
 
   return (
-    <section className="bg-[#272727] px-6 md:px-16 py-16 md:py-20">
+    <section className="bg-[#272727] px-6 md:px-16 pt-8 pb-20 md:pb-24">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
 
         {/* Label */}
-        <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-2">
-          Counting Down
-        </p>
+        <SectionLabel>Counting Down</SectionLabel>
         <p className="text-white/35 text-sm font-light mb-10">
           June 13, 2026 &bull; Lagos, Nigeria
         </p>

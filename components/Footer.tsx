@@ -29,7 +29,7 @@ export default function Footer() {
             { label: "Who Should Attend", href: "#who" },
             { label: "Schedule", href: "#agenda" },
             { label: "FAQ", href: "#faq" },
-            { label: "Apply for Invite", href: "https://luma.com/j2sbmjc7", external: true },
+            { label: "Apply for Invite", href: "https://tally.so/r/ZjDaXA", external: true },
           ].map((link) => (
             <a
               key={link.label}

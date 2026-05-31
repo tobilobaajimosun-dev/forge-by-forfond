@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SectionLabel from "@/components/SectionLabel";
 
 const faqs = [
   {
@@ -48,9 +49,7 @@ export default function FAQ() {
 
           {/* ── Left — sticky FAQ label ── */}
           <div className="md:w-[38%] md:sticky md:top-24 md:self-start mb-12 md:mb-0 md:pr-16">
-            <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-              Questions
-            </p>
+            <SectionLabel>Questions</SectionLabel>
             <h2
               className="font-bold text-white leading-[0.9] tracking-tight"
               style={{ fontSize: "clamp(64px, 10vw, 120px)" }}

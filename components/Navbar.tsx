@@ -26,7 +26,7 @@ export default function Navbar() {
             FAQ
           </a>
           <a
-            href="https://luma.com/j2sbmjc7"
+            href="https://tally.so/r/ZjDaXA"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[11px] font-semibold uppercase tracking-widest px-4 py-2 border border-white/25 text-white/70 hover:bg-[#B69556] hover:border-[#B69556] hover:text-white transition-all duration-200"
@@ -43,7 +43,7 @@ export default function Navbar() {
 
         {/* Mobile: just show register */}
         <a
-          href="https://luma.com/j2sbmjc7"
+          href="https://tally.so/r/ZjDaXA"
           target="_blank"
           rel="noopener noreferrer"
           className="md:hidden ml-auto text-[11px] font-semibold uppercase tracking-widest px-4 py-2 border border-white/25 text-white/70 hover:bg-[#B69556] hover:border-[#B69556] hover:text-white transition-all duration-200"

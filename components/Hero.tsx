@@ -1,6 +1,6 @@
 export default function HeroText() {
   return (
-    <section className="bg-[#272727] px-6 md:px-16 pt-40 md:pt-48 pb-24 md:pb-32">
+    <section className="bg-[#272727] px-6 md:px-16 pt-40 md:pt-48 pb-10 md:pb-12">
       <div className="max-w-5xl mx-auto text-center">
 
         {/* Display headline — centered */}

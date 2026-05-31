@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SectionLabel from "@/components/SectionLabel";
 
 const cards = [
   {
@@ -88,9 +89,7 @@ export default function Chatroom() {
 
       {/* Top block */}
       <div className="px-6 md:px-16 max-w-6xl mx-auto mb-14 md:mb-20">
-        <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-6">
-          The Chatroom
-        </p>
+        <SectionLabel>The Chatroom</SectionLabel>
 
         <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
 
