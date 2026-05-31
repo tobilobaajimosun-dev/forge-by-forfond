@@ -7,6 +7,7 @@ import Chatroom from "@/components/Chatroom";
 import Speakers from "@/components/Speakers";
 import MadeForYou from "@/components/MadeForYou";
 import ClosingCTA from "@/components/ClosingCTA";
+import FAQ from "@/components/FAQ";
 import Register from "@/components/Register";
 import Footer from "@/components/Footer";
 
@@ -30,9 +31,11 @@ export default function Home() {
       <MadeForYou />
       {/* 8. Closing statement + event details */}
       <ClosingCTA />
-      {/* 8. Registration form */}
+      {/* 9. FAQ — sticky left, scrolling right accordion */}
+      <FAQ />
+      {/* 10. Registration form */}
       <Register />
-      {/* 9. Footer */}
+      {/* 11. Footer */}
       <Footer />
     </>
   );
