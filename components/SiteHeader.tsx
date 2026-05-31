@@ -103,11 +103,11 @@ export default function SiteHeader() {
 
             {/* Center logo */}
             <a href="#top" className="absolute left-1/2 -translate-x-1/2 flex items-center">
-              {/* Drop the brand asset at public/forge-logo.png to replace the wordmark */}
+              {/* Brand asset at public/forge-logo.svg */}
               <img
-                src="/forge-logo.png"
+                src="/forge-logo.svg"
                 alt="Forge by ForFond"
-                className="h-8 w-auto object-contain"
+                className="h-7 md:h-8 w-auto object-contain"
                 onError={(e) => {
                   // Fallback to wordmark if the asset isn't present yet
                   const el = e.currentTarget;
