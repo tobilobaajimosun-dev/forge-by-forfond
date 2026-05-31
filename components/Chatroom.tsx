@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 
 const cards = [
   {
@@ -8,9 +8,9 @@ const cards = [
     subtitle: "Corporate Governance",
     body: "Understand your obligations. Structure your company correctly. Navigate compliance before it becomes a costly crisis.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <rect x="4" y="4" width="20" height="20" rx="2"/>
-        <path d="M9 10h10M9 14h6M9 18h8"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M7 8h10M7 12h6M7 16h8"/>
       </svg>
     ),
   },
@@ -19,8 +19,9 @@ const cards = [
     subtitle: "Strategic Tax Planning",
     body: "Stop reacting to tax season. Build an accounting structure that works for your business at every stage of growth.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M14 4v20M4 14h20M7 7l14 14M21 7L7 21"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M12 2v20M2 12h20"/>
+        <path d="M6.34 6.34l11.32 11.32M17.66 6.34L6.34 17.66"/>
       </svg>
     ),
   },
@@ -29,9 +30,9 @@ const cards = [
     subtitle: "Scaling Strategy",
     body: "Map the next phase of your business. Identify what to build, what to drop, and how to move without breaking what works.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M4 20l6-6 4 4 8-10"/>
-        <circle cx="22" cy="8" r="2"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M3 17l5-5 4 4 8-9"/>
+        <circle cx="20" cy="6" r="1.5" fill="currentColor" stroke="none"/>
       </svg>
     ),
   },
@@ -40,9 +41,9 @@ const cards = [
     subtitle: "Capital Raising",
     body: "Know your numbers. Build an investor-ready story. Understand what funders actually look for — before you walk into the room.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <circle cx="14" cy="14" r="10"/>
-        <path d="M14 8v6l4 4"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 6v6l3.5 3.5"/>
       </svg>
     ),
   },
@@ -51,10 +52,10 @@ const cards = [
     subtitle: "Wealth Building",
     body: "Your business is an asset. Learn how to pay yourself right, separate your money, and build wealth that outlasts the company.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <rect x="3" y="10" width="22" height="14" rx="2"/>
-        <path d="M8 10V7a6 6 0 0112 0v3"/>
-        <circle cx="14" cy="17" r="2"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <rect x="2" y="9" width="20" height="13" rx="2"/>
+        <path d="M7 9V7a5 5 0 0110 0v2"/>
+        <circle cx="12" cy="15.5" r="1.5"/>
       </svg>
     ),
   },
@@ -63,39 +64,43 @@ const cards = [
     subtitle: "Practical Implementation",
     body: "Cut through the hype. Learn which AI tools actually work for your stage, your industry, and your team right now.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <rect x="6" y="6" width="16" height="16" rx="8"/>
-        <path d="M10 14h8M14 10v8"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <rect x="5" y="5" width="14" height="14" rx="7"/>
+        <path d="M9 12h6M12 9v6"/>
       </svg>
     ),
   },
 ];
 
 export default function Chatroom() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState<number | null>(2); // center card active by default
 
   return (
-    <section className="bg-[#1a1a1a] pt-24 md:pt-36 pb-0 overflow-hidden">
+    <section className="bg-[#1a1a1a] pt-20 md:pt-32 pb-0 overflow-hidden">
 
-      {/* Top — headline block */}
-      <div className="px-6 md:px-16 max-w-6xl mx-auto mb-16 md:mb-20">
-
-        <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-8">
+      {/* Top block */}
+      <div className="px-6 md:px-16 max-w-6xl mx-auto mb-14 md:mb-20">
+        <p className="text-[#B69556] text-xs font-semibold uppercase tracking-[0.25em] mb-6">
           The Chatroom
         </p>
 
-        <div className="flex flex-col md:flex-row md:items-end gap-10 md:gap-20">
+        <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
 
-          {/* Large headline with inline highlight boxes */}
+          {/* Headline — sized to match reference */}
           <h2
-            className="font-black text-white leading-[0.92] tracking-tight shrink-0"
-            style={{ fontSize: "clamp(44px, 7vw, 96px)" }}
+            className="font-black text-white leading-[0.94] tracking-tight shrink-0"
+            style={{ fontSize: "clamp(36px, 5.5vw, 68px)" }}
           >
             Your Questions.
             <br />
             <span
-              className="inline-block px-3 py-1 mr-2"
-              style={{ background: "rgba(182,149,86,0.15)", color: "#fff" }}
+              className="inline"
+              style={{
+                background: "#B69556",
+                color: "#111",
+                padding: "0 10px 2px",
+                display: "inline",
+              }}
             >
               One Expert.
             </span>
@@ -103,78 +108,101 @@ export default function Chatroom() {
             Twenty Minutes.
           </h2>
 
-          {/* Supporting copy */}
-          <div className="max-w-sm">
-            <p className="text-white/45 text-base font-light leading-relaxed mb-5">
-              The most powerful conversation of the day happens here. After the
-              main sessions, every delegate sits privately with a specialist in
-              the area most relevant to their business.
+          {/* Side copy — explanatory, succinct */}
+          <div className="max-w-xs pt-1 md:pt-2">
+            <p className="text-white/45 text-sm leading-relaxed mb-4">
+              After the main sessions, every delegate sits privately with a
+              specialist in the exact area their business needs most. No
+              audience. No agenda but yours.
             </p>
-            <p className="text-white font-semibold text-base leading-relaxed">
-              No panel. No crowd. Just one focused, confidential conversation
-              built entirely around you.
+            <p className="text-white/80 text-sm font-semibold leading-relaxed">
+              Pick your area. Bring your real question.
+              Walk out with a clear next step.
             </p>
           </div>
 
         </div>
       </div>
 
-      {/* Cards — full-width horizontal scroll, bleeds to edges */}
+      {/* Cards carousel — Stripe Sessions style */}
       <div
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto px-6 md:px-16 pb-16 md:pb-24"
+        className="flex gap-0 overflow-x-auto px-6 md:px-16 pb-16 md:pb-24"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
           scrollbarWidth: "none",
-          msOverflowStyle: "none",
         }}
       >
-        {/* Left spacer so first card aligns to content margin on wide screens */}
-        <div className="shrink-0 w-0 md:w-0" />
+        {cards.map((card, i) => {
+          const isActive = hovered === i;
+          return (
+            <div
+              key={i}
+              className="shrink-0 flex flex-col justify-between transition-all duration-300 cursor-pointer"
+              style={{
+                width: "clamp(240px, 28vw, 360px)",
+                minHeight: "360px",
+                padding: "32px 28px",
+                marginRight: "1px",
+                background: isActive ? "#B69556" : "#202020",
+                scrollSnapAlign: "start",
+              }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(2)}
+            >
+              {/* Icon */}
+              <div>
+                <div
+                  className="mb-6 transition-colors duration-300"
+                  style={{ color: isActive ? "#111" : "#B69556" }}
+                >
+                  {card.icon}
+                </div>
 
-        {cards.map((card, i) => (
-          <div
-            key={i}
-            className="shrink-0 w-[280px] md:w-[340px] border border-white/[0.08] p-7 flex flex-col gap-6 hover:border-[#B69556]/40 transition-colors duration-200 group"
-            style={{ scrollSnapAlign: "start" }}
-          >
-            {/* Icon */}
-            <div className="text-[#B69556]/60 group-hover:text-[#B69556] transition-colors duration-200">
-              {card.icon}
-            </div>
+                {/* Title */}
+                <p
+                  className="font-bold text-lg leading-tight mb-1 transition-colors duration-300"
+                  style={{ color: isActive ? "#111" : "#fff" }}
+                >
+                  {card.title}
+                </p>
+                <p
+                  className="text-xs uppercase tracking-widest font-semibold mb-5 transition-colors duration-300"
+                  style={{ color: isActive ? "#5a4020" : "#B69556" }}
+                >
+                  {card.subtitle}
+                </p>
+                <p
+                  className="text-sm leading-relaxed transition-colors duration-300"
+                  style={{ color: isActive ? "#3a2a10" : "rgba(255,255,255,0.4)" }}
+                >
+                  {card.body}
+                </p>
+              </div>
 
-            {/* Text */}
-            <div className="flex-1">
-              <p className="text-white font-bold text-lg leading-tight mb-1">
-                {card.title}
-              </p>
-              <p className="text-[#B69556] text-xs uppercase tracking-widest font-medium mb-4">
-                {card.subtitle}
-              </p>
-              <p className="text-white/40 text-sm font-light leading-relaxed">
-                {card.body}
-              </p>
+              {/* Footer */}
+              <div
+                className="pt-6 mt-6 transition-colors duration-300"
+                style={{
+                  borderTop: `1px solid ${isActive ? "rgba(0,0,0,0.15)" : "rgba(255,255,255,0.06)"}`,
+                }}
+              >
+                <p
+                  className="text-[10px] uppercase tracking-[0.2em] font-semibold transition-colors duration-300"
+                  style={{ color: isActive ? "#5a4020" : "rgba(255,255,255,0.2)" }}
+                >
+                  20-min private session
+                </p>
+              </div>
             </div>
-
-            {/* Footer */}
-            <div className="pt-4 border-t border-white/[0.06]">
-              <p className="text-white/20 text-xs uppercase tracking-widest font-medium">
-                20-min private session
-              </p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
 
         {/* Right trailing space */}
         <div className="shrink-0 w-6 md:w-16" />
       </div>
 
-      {/* Hide scrollbar globally for this element */}
-      <style>{`
-        div::-webkit-scrollbar { display: none; }
-      `}</style>
-
+      <style>{`div::-webkit-scrollbar{display:none}`}</style>
     </section>
   );
 }
