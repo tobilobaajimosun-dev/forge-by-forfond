@@ -154,7 +154,7 @@ export default function ForgeOrbit() {
               className="relative border border-[#B69556]/30 bg-[#111111] flex items-center justify-center"
               style={{ width: "104px", height: "104px", borderRadius: "20px", boxShadow: "0 0 40px rgba(182,149,86,0.14)" }}
             >
-              <img src="/forge-mark.png" alt="Forge" className="w-14 h-auto object-contain" draggable={false} />
+              <img src="/forge-mark.png" loading="lazy" alt="Forge" className="w-14 h-auto object-contain" draggable={false} />
             </div>
           </div>
 

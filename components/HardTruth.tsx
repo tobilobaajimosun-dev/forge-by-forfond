@@ -40,7 +40,7 @@ export default function HardTruth() {
           obs.disconnect();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();

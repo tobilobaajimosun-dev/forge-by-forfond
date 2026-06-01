@@ -102,7 +102,12 @@ export default function Ticket3D() {
       <div
         ref={cardRef}
         className="relative"
-        style={{ width: "300px", height: "450px", transformStyle: "preserve-3d", willChange: "transform" }}
+        style={{
+          width: "min(300px, 78vw)",
+          height: "calc(min(300px, 78vw) * 1.5)",
+          transformStyle: "preserve-3d",
+          willChange: "transform",
+        }}
       >
         {/* FRONT */}
         <div className="absolute inset-0 overflow-hidden flex flex-col" style={faceBase}>
@@ -117,7 +122,7 @@ export default function Ticket3D() {
           </div>
 
           <div className="px-6 mt-auto mb-7">
-            <img src="/forge-mark.png" alt="" aria-hidden className="w-12 h-auto mb-3 opacity-90" draggable={false} />
+            <img src="/forge-mark.png" loading="lazy" alt="" aria-hidden className="w-12 h-auto mb-3 opacity-90" draggable={false} />
             <p
               className="leading-none mb-2"
               style={{ fontFamily: "var(--font-geist-pixel-circle)", fontSize: "40px", fontWeight: 500, letterSpacing: "-0.06em", color: "#16202e" }}
@@ -149,7 +154,7 @@ export default function Ticket3D() {
           style={{ ...faceBase, transform: "rotateY(180deg)" }}
         >
           <div className="absolute inset-0 opacity-[0.06] mix-blend-multiply pointer-events-none" style={{ backgroundImage: grain }} aria-hidden />
-          <img src="/forge-mark.png" alt="Forge" className="w-32 h-auto object-contain" draggable={false} />
+          <img src="/forge-mark.png" loading="lazy" alt="Forge" className="w-32 h-auto object-contain" draggable={false} />
           <span className="text-black/45 text-[9px] uppercase tracking-[0.35em]">Built to Scale</span>
         </div>
       </div>

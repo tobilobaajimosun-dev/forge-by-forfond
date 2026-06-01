@@ -81,6 +81,24 @@ export default function HeroText() {
           backgroundSize: "64px 64px",
         }}
       />
+
+      {/* Event logo icon — glowing swoosh centerpiece */}
+      <div
+        className="absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        aria-hidden
+      >
+        <div className="hero-glow absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{ width: "520px", height: "520px", maxWidth: "85vw", maxHeight: "85vw",
+            background: "radial-gradient(circle, rgba(182,149,86,0.22) 0%, transparent 60%)", filter: "blur(30px)" }}
+        />
+        <img
+          src="/forge-mark.png"
+          alt="Forge"
+          className="ticket-float relative w-[clamp(220px,42vw,460px)] h-auto"
+          draggable={false}
+          style={{ filter: "drop-shadow(0 30px 70px rgba(182,149,86,0.30))" }}
+        />
+      </div>
       {/* Grain / noise texture */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"

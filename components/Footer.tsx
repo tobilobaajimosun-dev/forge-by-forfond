@@ -4,14 +4,27 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col items-center">
 
         {/* Large centered brand logo */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <img
-            src="/forge-logo.svg"
+            src="/forge-logo-lite.svg"
             alt="Forge by ForFond"
             className="mx-auto w-auto"
+            loading="lazy"
             style={{ height: "clamp(64px, 10vw, 120px)" }}
           />
         </div>
+
+        {/* ForFond Group link */}
+        <a
+          href="https://forfond.africa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 mb-12 text-white/60 hover:text-white transition-colors duration-150 text-sm"
+        >
+          Forge is an experience by the
+          <span className="text-[#B69556] font-medium">ForFond Group</span>
+          <span className="group-hover:translate-x-1 transition-transform duration-150">→</span>
+        </a>
 
         {/* Nav links — mono uppercase */}
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mb-10">
