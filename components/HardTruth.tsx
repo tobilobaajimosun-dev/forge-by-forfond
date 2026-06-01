@@ -21,37 +21,46 @@ const tokens: Tok[] = [
 
 export default function HardTruth() {
   const ref = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
   const [n, setN] = useState(0);
-  const [started, setStarted] = useState(false);
   const done = n >= tokens.length;
 
+  // Reveal is driven by SCROLL POSITION, so the text is always fully revealed
+  // by the time the reader reaches the card — no fixed timer to outrun.
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
+    const textEl = textRef.current;
+    if (!el || !textEl) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setN(tokens.length);
       return;
     }
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setStarted(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
-  useEffect(() => {
-    if (!started || done) return;
-    const delay = tokens[n]?.br ? 260 : 70; // a touch slower → smoother to read
-    const id = setTimeout(() => setN((v) => v + 1), delay);
-    return () => clearTimeout(id);
-  }, [started, n, done]);
+    let raf = 0;
+    const update = () => {
+      const r = textEl.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 when the text block's top sits at 82% of the viewport,
+      // 1 by the time its top reaches 30% — finishes well before the card.
+      const start = vh * 0.82;
+      const endZone = vh * 0.30;
+      const p = Math.max(0, Math.min(1, (start - r.top) / (start - endZone)));
+      const count = Math.round(p * tokens.length);
+      setN((prev) => (count > prev ? count : prev)); // monotonic — never un-reveal
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <section ref={ref} className="bg-black px-6 md:px-16 py-20 md:py-28">
@@ -59,6 +68,7 @@ export default function HardTruth() {
         <SectionLabel>The Hard Truth</SectionLabel>
 
         <p
+          ref={textRef}
           className="mt-6"
           style={{
             fontSize: "clamp(20px, 2.6vw, 34px)",
@@ -74,12 +84,11 @@ export default function HardTruth() {
                 <span
                   style={{
                     display: "inline-block",
-                    color: shown ? (t.g ? "#B69556" : "#fff") : "rgba(255,255,255,0.10)",
-                    filter: shown ? "blur(0px)" : "blur(5px)",
-                    opacity: shown ? 1 : 0.5,
-                    transform: shown ? "translateY(0)" : "translateY(4px)",
+                    color: shown ? (t.g ? "#B69556" : "#fff") : "rgba(255,255,255,0.12)",
+                    filter: shown ? "blur(0px)" : "blur(4px)",
+                    opacity: shown ? 1 : 0.55,
                     transition:
-                      "color 600ms cubic-bezier(0.23,1,0.32,1), filter 600ms cubic-bezier(0.23,1,0.32,1), opacity 600ms cubic-bezier(0.23,1,0.32,1), transform 600ms cubic-bezier(0.23,1,0.32,1)",
+                      "color 260ms ease-out, filter 260ms ease-out, opacity 260ms ease-out",
                   }}
                 >
                   {t.w}
