@@ -101,13 +101,22 @@ export default function HardTruth() {
               The Real Question
             </p>
             <h3
-              className="text-white tracking-tight leading-[1.05]"
-              style={{ fontSize: "clamp(28px, 4vw, 56px)", fontWeight: 500 }}
+              className="text-white tracking-tight leading-[1.08]"
+              style={{ fontSize: "clamp(26px, 3.6vw, 48px)", fontWeight: 500 }}
             >
-              Built to Be{" "}
-              <span className="text-white/30">Broken.</span>{" "}
-              Or Built to Scale?
+              Is your business built to be{" "}
+              <span className="text-white/30">broken</span>
+              &mdash; or built to scale?
             </h3>
+            <a
+              href="https://tally.so/r/ZjDaXA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pixel-btn group mt-7 inline-flex items-center gap-2.5 bg-[#B69556] hover:bg-[#c9a96a] text-black font-semibold text-sm uppercase tracking-widest px-6 h-12 transition-colors duration-150"
+            >
+              Come find out
+              <span className="group-hover:translate-x-1 transition-transform duration-150">→</span>
+            </a>
           </div>
         </div>
       </div>

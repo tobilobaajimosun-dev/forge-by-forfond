@@ -101,10 +101,10 @@ export default function HeroText() {
             <h1
               className="text-white leading-[0.9] mb-4"
               style={{
-                fontFamily: "var(--font-pixel)",
-                fontSize: "clamp(46px, 7vw, 100px)",
+                fontFamily: "var(--font-geist-pixel-circle)",
+                fontSize: "clamp(44px, 6.5vw, 96px)",
                 fontWeight: 600,
-                letterSpacing: "-0.01em",
+                letterSpacing: "0.01em",
               }}
             >
               Forge&rsquo;26

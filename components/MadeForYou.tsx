@@ -1,4 +1,5 @@
 import SectionLabel from "@/components/SectionLabel";
+import Ticket3D from "@/components/Ticket3D";
 
 const criteria = [
   {
@@ -73,75 +74,16 @@ export default function MadeForYou() {
               href="https://tally.so/r/ZjDaXA"
               target="_blank"
               rel="noopener noreferrer"
-              className="pixel-btn group mt-10 inline-flex items-center gap-3 bg-[#B69556] hover:bg-[#c9a96a] text-black px-7 h-14 rounded-xl transition-colors duration-200 font-semibold text-sm uppercase tracking-widest"
+              className="pixel-btn group mt-10 flex w-full items-center justify-center gap-3 bg-[#B69556] hover:bg-[#c9a96a] text-black h-16 transition-colors duration-200 font-semibold text-sm uppercase tracking-widest"
             >
               Request an Invite
               <span className="group-hover:translate-x-1 transition-transform duration-150">→</span>
             </a>
           </div>
 
-          {/* Right — twirling 3D ticket with lights */}
-          <div className="lg:sticky lg:top-24 lg:self-start flex items-center justify-center py-10">
-            <div className="relative" style={{ perspective: "1400px" }}>
-              {/* Ambient lights */}
-              <div
-                className="absolute left-1/2 top-1/2 pointer-events-none ticket-float"
-                style={{
-                  width: "420px", height: "420px",
-                  transform: "translate(-50%, -50%)",
-                  background: "radial-gradient(circle, rgba(182,149,86,0.22) 0%, transparent 62%)",
-                  filter: "blur(20px)",
-                }}
-                aria-hidden
-              />
-
-              {/* Twirling ticket */}
-              <div className="ticket-float">
-                <div
-                  className="ticket-twirl relative"
-                  style={{ width: "260px", height: "150px", transformStyle: "preserve-3d" }}
-                >
-                  {/* Front face */}
-                  <div
-                    className="absolute inset-0 rounded-2xl overflow-hidden flex flex-col justify-between p-5"
-                    style={{
-                      backfaceVisibility: "hidden",
-                      background: "linear-gradient(135deg, #1a2535 0%, #2a2a2a 45%, #B69556 100%)",
-                      boxShadow: "0 30px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15)",
-                      border: "1px solid rgba(182,149,86,0.4)",
-                    }}
-                  >
-                    {/* perforation line */}
-                    <div className="absolute top-0 bottom-0 left-[72%] border-l border-dashed border-white/25" />
-                    <div className="flex items-start justify-between">
-                      <span className="text-white/90 text-[10px] font-bold uppercase tracking-[0.2em]">Admit One</span>
-                      <span className="text-white/70 text-[9px] font-mono">№ 026</span>
-                    </div>
-                    <div>
-                      <p className="text-white font-bold text-2xl leading-none tracking-tight" style={{ fontFamily: "var(--font-pixel)" }}>
-                        Forge&rsquo;26
-                      </p>
-                      <p className="text-white/70 text-[9px] uppercase tracking-widest mt-1 font-mono">
-                        June 13 &bull; Lagos
-                      </p>
-                    </div>
-                  </div>
-                  {/* Back face */}
-                  <div
-                    className="absolute inset-0 rounded-2xl flex items-center justify-center"
-                    style={{
-                      backfaceVisibility: "hidden",
-                      transform: "rotateY(180deg)",
-                      background: "linear-gradient(135deg, #B69556 0%, #2a2a2a 55%, #1a2535 100%)",
-                      boxShadow: "0 30px 60px rgba(0,0,0,0.55)",
-                      border: "1px solid rgba(182,149,86,0.4)",
-                    }}
-                  >
-                    <span className="text-black/80 text-sm font-bold uppercase tracking-[0.3em]">ForFond</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Right — interactive vertical 3D ticket */}
+          <div className="lg:sticky lg:top-24 lg:self-center">
+            <Ticket3D />
           </div>
 
         </div>
