@@ -116,7 +116,7 @@ export default function Schedule() {
           <div>
             <SectionLabel dark>June 13, 2026</SectionLabel>
             <h2 className="section-h" style={{ color: "#1a1a1a" }}>
-              Full Programme
+              The Day, Hour by Hour
             </h2>
           </div>
           <p className="text-black/40 text-sm font-light max-w-xs md:text-right">
