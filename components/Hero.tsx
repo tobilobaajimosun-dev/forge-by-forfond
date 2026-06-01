@@ -112,8 +112,9 @@ export default function HeroText() {
               style={{
                 fontFamily: "var(--font-geist-pixel-circle)",
                 fontSize: "clamp(44px, 6.5vw, 96px)",
-                fontWeight: 600,
-                letterSpacing: "0.01em",
+                fontWeight: 500,
+                letterSpacing: "-0.06em",
+                lineHeight: 1,
               }}
             >
               Forge&rsquo;26

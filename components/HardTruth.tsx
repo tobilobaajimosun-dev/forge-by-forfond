@@ -106,7 +106,7 @@ export default function HardTruth() {
             >
               Is your business built to be{" "}
               <span className="text-white/30">broken</span>
-              &mdash; or built to scale?
+              {" "}or built to scale?
             </h3>
             <a
               href="https://tally.so/r/ZjDaXA"

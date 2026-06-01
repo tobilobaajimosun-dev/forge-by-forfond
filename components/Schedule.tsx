@@ -1,78 +1,110 @@
 import SectionLabel from "@/components/SectionLabel";
 
-const sessions = [
+type Item = {
+  time: string;
+  title: string;
+  subtitle?: string;
+  body?: string;
+  bullets?: string[];
+  muted?: boolean; // breaks / logistics
+};
+
+const programme: Item[] = [
   {
-    time: "9:00 AM",
-    end: "9:55 AM",
-    title: "Registration & Welcome Breakfast",
-    description: "Arrive, connect, and settle in.",
-    track: "General",
+    time: "8:00 – 9:30 AM",
+    title: "Registration, Breakfast & Networking",
+    body: "Arrive, check in, enjoy breakfast, and connect with fellow founders, business leaders, and industry professionals before the day's sessions begin.",
+    muted: true,
   },
   {
-    time: "10:00 AM",
-    end: "11:15 AM",
-    title: "Session 01 — Hacking Growth in the Current Global Context",
-    description:
-      "What global headwinds mean for SMEs, where the real opportunities are in 2026, and how to build a practical expansion plan around smart pivots and strategic alliances.",
-    track: "Growth Mindset",
+    time: "9:30 – 9:45 AM",
+    title: "Opening & Welcome",
+    body: "An introduction to Forge'26, the day's programme, and what attendees can expect from the experience.",
   },
   {
-    time: "11:15 AM",
-    end: "11:30 AM",
-    title: "Break",
-    description: "",
-    track: "Break",
+    time: "9:45 – 11:00 AM",
+    title: "Session 1 — Growth Mindset",
+    subtitle: "Built for Growth in a Changing World",
+    body: "Explore the realities of building and scaling businesses in today's economic environment:",
+    bullets: [
+      "Understanding the African SME landscape",
+      "Identifying emerging growth opportunities",
+      "Navigating uncertainty and change",
+      "Building practical expansion strategies",
+      "Leveraging partnerships and strategic alliances",
+    ],
   },
   {
-    time: "11:30 AM",
-    end: "12:45 PM",
-    title: "Session 02 — The Unglamorous Engines Behind Every Scaling Business",
-    description:
-      "Company setup, operational systems, compliance, people management, and corporate governance — the work that quietly determines whether your business carries the weight of growth or breaks under it.",
-    track: "Growth Engines",
+    time: "11:00 – 11:30 AM",
+    title: "Networking Break",
+    body: "Refreshments and networking.",
+    muted: true,
   },
   {
-    time: "12:45 PM",
-    end: "1:45 PM",
-    title: "Lunch Break",
-    description: "",
-    track: "Break",
+    time: "11:30 – 1:00 PM",
+    title: "Session 2 — Growth Engines",
+    subtitle: "Governance & Operations for Sustainable Scale",
+    body: "Discover the systems that enable businesses to grow sustainably:",
+    bullets: [
+      "Organizational structure and business readiness",
+      "Operational systems that scale",
+      "Governance and accountability frameworks",
+      "Compliance as a growth enabler",
+      "Building effective people systems",
+      "Avoiding common operational pitfalls",
+    ],
   },
   {
-    time: "1:45 PM",
-    end: "3:00 PM",
-    title: "Session 03 — Unbundling the Myths",
-    description:
-      "How to pay yourself correctly, permanently separate business and personal money, build personal wealth alongside your company, and protect everything — pension, insurance, and beyond.",
-    track: "Personal Finance",
+    time: "1:00 – 2:00 PM",
+    title: "Lunch & Networking",
+    body: "Enjoy lunch while connecting with fellow attendees, exhibitors, and business leaders.",
+    muted: true,
   },
   {
-    time: "3:00 PM",
-    end: "5:00 PM",
-    title: "The Chatroom — Expert Consultations",
-    description:
-      "Every delegate sits privately with a specialist in their chosen area. Twenty minutes. One expert. No panel. No crowd.",
-    track: "Chatroom",
+    time: "2:00 – 2:45 PM",
+    title: "Session 3 — Personal Finance",
+    subtitle: "Building Personal Wealth Alongside Business Success",
+    body: "Learn practical approaches to personal financial management:",
+    bullets: [
+      "Separating personal and business finances",
+      "Founder compensation strategies",
+      "Building long-term personal wealth",
+      "Insurance, pension, and financial protection",
+      "Managing personal finances during business challenges",
+    ],
   },
   {
-    time: "5:00 PM",
-    end: "6:00 PM",
-    title: "Networking & Close",
-    description: "Connect with fellow founders and the ForFond team.",
-    track: "General",
+    time: "2:45 – 2:55 PM",
+    title: "Expert Consultation Briefing",
+    body: "An overview of the expert consultation experience and session allocations.",
+    muted: true,
+  },
+  {
+    time: "2:55 – 4:25 PM",
+    title: "Expert Consultation Sessions",
+    body: "A series of private small-group consultations with specialists across key business functions. Consultation areas include:",
+    bullets: [
+      "Legal & Compliance",
+      "Corporate Governance",
+      "Accounting & Tax",
+      "Growth & Innovation",
+      "Corporate Finance & Capital Raising",
+      "Personal Finance",
+      "AI for African SMEs",
+    ],
+  },
+  {
+    time: "4:35 – 4:50 PM",
+    title: "Closing Session",
+    body: "Key insights from the day, closing reflections, and next steps for attendees.",
+  },
+  {
+    time: "4:50 – 6:00 PM",
+    title: "Cocktail Reception & Networking",
+    body: "Wrap up the day with refreshments, conversations, and meaningful connections with fellow founders, experts, and business leaders.",
+    muted: true,
   },
 ];
-
-const GOLD_PILL = "text-[#8a6d33] border-[#B69556]/50 bg-[#B69556]/15";
-
-const trackColors: Record<string, string> = {
-  "Growth Mindset": GOLD_PILL,
-  "Growth Engines": GOLD_PILL,
-  "Personal Finance": GOLD_PILL,
-  Chatroom: GOLD_PILL,
-  Break: "text-black/30 border-black/10 bg-black/[0.03]",
-  General: "text-black/35 border-black/10 bg-black/[0.03]",
-};
 
 export default function Schedule() {
   return (
@@ -80,11 +112,11 @@ export default function Schedule() {
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-0">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
             <SectionLabel dark>June 13, 2026</SectionLabel>
             <h2 className="section-h" style={{ color: "#1a1a1a" }}>
-              Full Schedule
+              Full Programme
             </h2>
           </div>
           <p className="text-black/40 text-sm font-light max-w-xs md:text-right">
@@ -93,64 +125,46 @@ export default function Schedule() {
           </p>
         </div>
 
-        {/* Column headers */}
-        <div className="mt-12 mb-0 grid grid-cols-[120px_1fr_auto] gap-6 pb-3 border-b border-black/15">
-          <span className="text-black/35 text-[10px] uppercase tracking-widest font-medium">Time</span>
-          <span className="text-black/35 text-[10px] uppercase tracking-widest font-medium">Session</span>
-          <span className="text-black/35 text-[10px] uppercase tracking-widest font-medium hidden md:block">Track</span>
-        </div>
-
-        {/* Sessions */}
-        {sessions.map((s, i) => {
-          const isBreak = s.track === "Break";
-          return (
+        {/* Programme rows */}
+        <div className="border-t border-black/15">
+          {programme.map((s, i) => (
             <div
               key={i}
-              className={`grid grid-cols-[120px_1fr] md:grid-cols-[120px_1fr_auto] gap-6 py-6 border-b border-black/[0.08] group ${
-                isBreak ? "opacity-50" : "hover:bg-black/[0.02] transition-colors duration-150"
-              }`}
+              className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-2 md:gap-10 py-7 border-b border-black/[0.09]"
             >
               {/* Time */}
               <div className="shrink-0">
-                <p
-                  className="text-[#8a6d33] text-xs font-semibold"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {s.time}
-                </p>
-                <p
-                  className="text-black/30 text-[10px] mt-0.5"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  – {s.end}
-                </p>
+                <p className="text-[#8a6d33] text-sm font-semibold tabular-nums">{s.time}</p>
               </div>
 
-              {/* Title + description */}
+              {/* Content */}
               <div className="min-w-0">
-                <p className={`font-semibold text-sm md:text-base leading-snug ${isBreak ? "text-black/40" : "text-[#1a1a1a]"}`}>
+                <h3 className={`font-semibold text-lg md:text-xl leading-snug ${s.muted ? "text-black/55" : "text-[#1a1a1a]"}`}>
                   {s.title}
-                </p>
-                {s.description && (
-                  <p className="text-black/45 text-sm font-light leading-relaxed mt-2 max-w-2xl">
-                    {s.description}
+                </h3>
+                {s.subtitle && (
+                  <p className="text-[#8a6d33] text-sm font-medium mt-1">{s.subtitle}</p>
+                )}
+                {s.body && (
+                  <p className="text-black/55 text-[15px] font-light leading-relaxed mt-2.5 max-w-2xl">
+                    {s.body}
                   </p>
                 )}
-              </div>
-
-              {/* Track badge */}
-              <div className="hidden md:flex items-start pt-0.5 shrink-0">
-                {!isBreak && s.track !== "General" && (
-                  <span className={`text-[10px] font-semibold uppercase tracking-widest border px-2.5 py-1 ${trackColors[s.track]}`}>
-                    {s.track}
-                  </span>
+                {s.bullets && (
+                  <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1.5 max-w-2xl">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-black/55 text-[14px] font-light leading-relaxed">
+                        <span className="mt-2 w-1 h-1 rounded-full bg-[#B69556] shrink-0" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
 
-        {/* Footer note */}
         <p className="text-black/30 text-xs font-light mt-6 uppercase tracking-widest">
           Speakers for each session to be announced
         </p>
