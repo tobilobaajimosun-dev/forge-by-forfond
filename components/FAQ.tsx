@@ -5,36 +5,32 @@ import SectionLabel from "@/components/SectionLabel";
 
 const faqs = [
   {
-    q: "What is Forge by ForFond?",
-    a: "Forge is a curated one-day business experience designed for startup founders and SME owners who are serious about building systems that can survive growth. It brings together three focused sessions — covering growth strategy, governance & operations, and personal finance — alongside private expert consultations in The Chatroom.",
+    q: "What is Forge'26?",
+    a: "Forge is a curated one-day experience for founders and SME owners serious about building a business that can survive growth. Three focused sessions — growth, operations, and personal finance — plus a private one-on-one consultation in The Chatroom.",
   },
   {
-    q: "When and where is Forge taking place?",
-    a: "Forge by ForFond holds on June 13, 2026. It is an in-person event. Venue details will be communicated to registered attendees ahead of the date.",
+    q: "Is it really free?",
+    a: "Yes. Forge'26 is completely free to attend — by invitation only. There are no ticket tiers and nothing to pay. Request an invite, and if it's a fit, you're in.",
   },
   {
-    q: "Who should attend Forge?",
-    a: "Forge is built for founders and business owners who have built something real and know it needs stronger foundations before the next phase — whether that is raising funding, scaling operations, or simply running a cleaner, more structured business.",
+    q: "When and where is it?",
+    a: "Forge'26 holds on June 13, 2026, in Lagos, Nigeria. It's an in-person event. The exact venue is shared with confirmed attendees ahead of the day.",
   },
   {
-    q: "How do I register and what does a ticket include?",
-    a: "You can register directly on this page. Your ticket includes access to all three main sessions, a private 20-minute consultation in The Chatroom with an expert in your chosen area, and the full Forge experience. Ticket tiers include Standard, VIP, and Corporate Table (10 seats).",
+    q: "Who should attend?",
+    a: "Founders and business owners who've built something real and know their systems need to catch up — whether they're preparing to raise, scaling operations, or simply ready to run a cleaner, stronger business.",
+  },
+  {
+    q: "How do I get in?",
+    a: "Request an invite on this page. Because seats are limited and curated, we review every request and confirm attendees directly. The earlier you request, the better your chances.",
   },
   {
     q: "What is The Chatroom?",
-    a: "The Chatroom is the private consultation segment of Forge. Every delegate is matched one-on-one with a specialist — covering Legal & Compliance, Accounting & Tax, Growth & Innovation, Corporate Finance & Capital Raising, Personal Finance, or AI for African SMEs. Twenty minutes. No panel. No audience. Just you and the right expert.",
+    a: "The most valuable twenty minutes of the day. After the sessions, you sit privately with a specialist in the area your business needs most — legal, tax, growth, corporate finance, personal finance, or AI. No panel, no audience. Just you and the right expert.",
   },
   {
-    q: "Will Forge be live-streamed or recorded?",
-    a: "Forge is designed as an intentionally in-person experience. There are no plans for a live stream or recording. The value of the day is in the room — the conversations, the consultations, and the calibre of people present.",
-  },
-  {
-    q: "Can my company sponsor or partner with Forge?",
-    a: "Yes. If your organisation is interested in sponsorship or partnership opportunities at Forge, reach out to the ForFond team directly. Sponsorship opportunities are limited and curated to align with the quality of the experience.",
-  },
-  {
-    q: "What is the refund and cancellation policy?",
-    a: "Refund and cancellation details will be communicated upon registration. Given the limited and curated nature of the event, we encourage delegates to confirm their attendance before registering. Transfers to another attendee are accommodated where possible.",
+    q: "Will it be live-streamed or recorded?",
+    a: "No. Forge is intentionally in-person. The value is in the room — the conversations, the consultations, and the people present.",
   },
 ];
 

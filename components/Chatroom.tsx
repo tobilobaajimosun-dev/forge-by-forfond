@@ -83,6 +83,7 @@ function Highlight({ children }: { children: React.ReactNode }) {
 
 export default function Chatroom() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [paused, setPaused] = useState(false);
 
   return (
     <section className="bg-[#1a1a1a] pt-20 md:pt-32 pb-0 overflow-hidden">
@@ -121,114 +122,55 @@ export default function Chatroom() {
         </div>
       </div>
 
-      {/* Staggered cards — alternating Y offset + shadow + overlap */}
-      <div
-        className="flex overflow-x-auto px-6 md:px-16 pb-24"
-        style={{
-          scrollSnapType: "x mandatory",
-          WebkitOverflowScrolling: "touch",
-          scrollbarWidth: "none",
-          alignItems: "flex-start",
-          paddingBottom: "80px",   // room for shadow
-          paddingTop: "12px",       // room for shadow on top
-        }}
-      >
-        {cards.map((card, i) => {
-          const isActive = hovered === i;
-          // Alternating stagger: even = high, odd = low
-          const staggerY = i % 2 === 0 ? 0 : 48;
-
-          return (
-            <div
-              key={i}
-              className="shrink-0 flex flex-col justify-between cursor-pointer"
-              style={{
-                width: "clamp(230px, 26vw, 320px)",
-                minHeight: "340px",
-                padding: "28px 24px",
-                borderRadius: "18px",
-                // Overlap adjacent cards slightly
-                marginRight: "-12px",
-                marginTop: staggerY,
-                zIndex: isActive ? 10 : i,
-                background: isActive ? "#B69556" : "#202020",
-                boxShadow: isActive
-                  ? "0 16px 40px rgba(0,0,0,0.28)"
-                  : "0 8px 24px rgba(0,0,0,0.18)",
-                transition:
-                  "background 250ms cubic-bezier(0.23,1,0.32,1), box-shadow 250ms cubic-bezier(0.23,1,0.32,1), z-index 0ms",
-                scrollSnapAlign: "start",
-              }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {/* Icon */}
-              <div>
-                <div
-                  className="mb-5"
-                  style={{
-                    color: isActive ? "#111" : "#B69556",
-                    transition: "color 250ms ease",
-                  }}
-                >
-                  {card.icon}
-                </div>
-
-                <p
-                  className="font-bold text-base leading-tight mb-1"
-                  style={{
-                    color: isActive ? "#111" : "#fff",
-                    transition: "color 250ms ease",
-                  }}
-                >
-                  {card.title}
-                </p>
-                <p
-                  className="text-[10px] uppercase tracking-widest font-semibold mb-4"
-                  style={{
-                    color: isActive ? "#5a3d10" : "#B69556",
-                    transition: "color 250ms ease",
-                  }}
-                >
-                  {card.subtitle}
-                </p>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{
-                    color: isActive ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.38)",
-                    transition: "color 250ms ease",
-                  }}
-                >
-                  {card.body}
-                </p>
-              </div>
-
-              {/* Footer */}
+      {/* Auto-scrolling marquee of cards — pauses while hovering a card */}
+      <div className="relative overflow-hidden pb-20 pt-3">
+        <div
+          className={`marquee-track flex gap-5 w-max px-6 md:px-16 ${paused ? "marquee-paused" : ""}`}
+        >
+          {/* Duplicate the list twice for a seamless loop */}
+          {[...cards, ...cards].map((card, i) => {
+            const key = i % cards.length;
+            const isActive = hovered === i;
+            return (
               <div
-                className="pt-5 mt-5"
+                key={i}
+                className="shrink-0 flex flex-col justify-between cursor-pointer"
                 style={{
-                  borderTop: `1px solid ${isActive ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.06)"}`,
-                  transition: "border-color 250ms ease",
+                  width: "clamp(240px, 24vw, 310px)",
+                  minHeight: "330px",
+                  padding: "28px 24px",
+                  borderRadius: "18px",
+                  background: isActive ? "#B69556" : "#202020",
+                  boxShadow: isActive ? "0 16px 40px rgba(0,0,0,0.28)" : "0 8px 24px rgba(0,0,0,0.18)",
+                  transition: "background 250ms cubic-bezier(0.23,1,0.32,1), box-shadow 250ms cubic-bezier(0.23,1,0.32,1)",
                 }}
+                onMouseEnter={() => { setHovered(i); setPaused(true); }}
+                onMouseLeave={() => { setHovered(null); setPaused(false); }}
               >
-                <p
-                  className="text-[10px] uppercase tracking-[0.2em] font-semibold"
-                  style={{
-                    color: isActive ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.18)",
-                    transition: "color 250ms ease",
-                  }}
-                >
-                  20-min private session
-                </p>
+                <div>
+                  <div className="mb-5" style={{ color: isActive ? "#111" : "#B69556", transition: "color 250ms ease" }}>
+                    {cards[key].icon}
+                  </div>
+                  <p className="font-bold text-base leading-tight mb-1" style={{ color: isActive ? "#111" : "#fff", transition: "color 250ms ease" }}>
+                    {cards[key].title}
+                  </p>
+                  <p className="text-[10px] uppercase tracking-widest font-semibold mb-4" style={{ color: isActive ? "#5a3d10" : "#B69556", transition: "color 250ms ease" }}>
+                    {cards[key].subtitle}
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: isActive ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.38)", transition: "color 250ms ease" }}>
+                    {cards[key].body}
+                  </p>
+                </div>
+                <div className="pt-5 mt-5" style={{ borderTop: `1px solid ${isActive ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.06)"}`, transition: "border-color 250ms ease" }}>
+                  <p className="text-[10px] uppercase tracking-[0.2em] font-semibold" style={{ color: isActive ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.18)", transition: "color 250ms ease" }}>
+                    20-min private session
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
-
-        <div className="shrink-0 w-8 md:w-16" />
+            );
+          })}
+        </div>
       </div>
-
-      <style>{`div::-webkit-scrollbar{display:none}`}</style>
     </section>
   );
 }

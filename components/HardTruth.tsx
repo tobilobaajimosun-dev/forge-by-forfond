@@ -48,7 +48,7 @@ export default function HardTruth() {
 
   useEffect(() => {
     if (!started || done) return;
-    const delay = tokens[n]?.br ? 220 : 55;
+    const delay = tokens[n]?.br ? 260 : 70; // a touch slower → smoother to read
     const id = setTimeout(() => setN((v) => v + 1), delay);
     return () => clearTimeout(id);
   }, [started, n, done]);
@@ -62,7 +62,7 @@ export default function HardTruth() {
           className="mt-6"
           style={{
             fontSize: "clamp(20px, 2.6vw, 34px)",
-            lineHeight: 1.45,
+            lineHeight: 1.5,
             fontWeight: 400,
             letterSpacing: "-0.01em",
           }}
@@ -73,9 +73,13 @@ export default function HardTruth() {
               <span key={i}>
                 <span
                   style={{
-                    color: shown ? (t.g ? "#B69556" : "#fff") : "rgba(255,255,255,0.12)",
-                    filter: shown ? "blur(0px)" : "blur(4px)",
-                    transition: "color 360ms ease, filter 360ms ease",
+                    display: "inline-block",
+                    color: shown ? (t.g ? "#B69556" : "#fff") : "rgba(255,255,255,0.10)",
+                    filter: shown ? "blur(0px)" : "blur(5px)",
+                    opacity: shown ? 1 : 0.5,
+                    transform: shown ? "translateY(0)" : "translateY(4px)",
+                    transition:
+                      "color 600ms cubic-bezier(0.23,1,0.32,1), filter 600ms cubic-bezier(0.23,1,0.32,1), opacity 600ms cubic-bezier(0.23,1,0.32,1), transform 600ms cubic-bezier(0.23,1,0.32,1)",
                   }}
                 >
                   {t.w}
@@ -86,10 +90,11 @@ export default function HardTruth() {
           })}
         </p>
 
-        {/* Question card — glitch border */}
+        {/* Question card — appears (blurs in) only after the text finishes */}
         <div className="mt-14 md:mt-16">
           <div
-            className="glitch-border rounded-2xl border border-white/10 bg-[#0c0c0c] px-8 py-10 md:px-12 md:py-14"
+            data-show={done ? "true" : "false"}
+            className="card-reveal rounded-2xl border border-white/10 bg-[#0c0c0c] px-8 py-10 md:px-12 md:py-14"
             style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
           >
             <p className="text-[#B69556] text-[11px] font-semibold uppercase tracking-[0.25em] mb-4">

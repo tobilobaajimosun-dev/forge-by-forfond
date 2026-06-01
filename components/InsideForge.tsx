@@ -28,14 +28,13 @@ export default function InsideForge() {
   return (
     <section
       id="inside"
-      className="px-6 md:px-16 pt-24 md:pt-36 pb-24 md:pb-32"
-      style={{ background: "linear-gradient(to bottom, #1a1a1a 0%, #000000 140px)" }}
+      className="bg-black px-6 md:px-16 pt-24 md:pt-36 pb-24 md:pb-32"
     >
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="mb-16 md:mb-24">
-          <SectionLabel>Inside Forge</SectionLabel>
+          <SectionLabel>Inside Forge&rsquo;26</SectionLabel>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <h2
               className="font-semibold text-white leading-[0.98] tracking-tight"

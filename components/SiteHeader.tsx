@@ -104,9 +104,9 @@ export default function SiteHeader() {
             {/* Center logo — full Forge / ForFond mark */}
             <a href="#top" className="absolute left-1/2 -translate-x-1/2 flex items-center">
               <img
-                src="/forge-logo-nav.png"
+                src="/forge-logo-lite.svg"
                 alt="Forge by ForFond"
-                className="h-7 md:h-8 w-auto object-contain"
+                className="h-8 md:h-9 w-auto object-contain"
               />
             </a>
 
@@ -122,7 +122,7 @@ export default function SiteHeader() {
                 href={REGISTER}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glitch-border text-[11px] font-semibold uppercase tracking-widest px-4 py-2 bg-[#B69556] text-black hover:bg-[#c9a96a] transition-colors duration-200"
+                className="pixel-btn text-[11px] font-semibold uppercase tracking-widest px-4 py-2 bg-[#B69556] text-black hover:bg-[#c9a96a] transition-colors duration-200"
               >
                 Register
               </a>
@@ -133,7 +133,7 @@ export default function SiteHeader() {
               href={REGISTER}
               target="_blank"
               rel="noopener noreferrer"
-              className="glitch-border md:hidden ml-auto text-[11px] font-semibold uppercase tracking-widest px-4 py-2 bg-[#B69556] text-black hover:bg-[#c9a96a] transition-colors duration-200"
+              className="pixel-btn md:hidden ml-auto text-[11px] font-semibold uppercase tracking-widest px-4 py-2 bg-[#B69556] text-black hover:bg-[#c9a96a] transition-colors duration-200"
             >
               Register
             </a>

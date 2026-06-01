@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Hanken_Grotesk } from "next/font/google";
+import { Pixelify_Sans } from "next/font/google";
 import "./globals.css";
+
+/* Pixel display font for the hero wordmark (Ship-style) */
+const pixel = Pixelify_Sans({
+  subsets: ["latin"],
+  variable: "--font-pixel",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 
 /*
   Display font: Hanken Grotesk — a clean neo-grotesque, close to Neue Montreal
@@ -35,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${display.variable} ${geist.variable}`}>
+    <html lang="en" className={`h-full antialiased ${display.variable} ${geist.variable} ${pixel.variable}`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
