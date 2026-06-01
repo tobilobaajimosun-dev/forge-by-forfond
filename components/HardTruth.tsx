@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import SectionLabel from "@/components/SectionLabel";
 
-// Story as word tokens. `br: 2` = paragraph break, `g` = gold emphasis.
 type Tok = { w: string; g?: boolean; br?: number };
 
 const tokens: Tok[] = [
@@ -17,10 +16,7 @@ const tokens: Tok[] = [
   { w: "never", g: true }, { w: "managed.", g: true }, { w: "The" }, { w: "payroll" }, { w: "held" }, { w: "together" }, { w: "by" }, { w: "goodwill." , br: 2 },
 
   { w: "Growth" }, { w: "doesn’t" }, { w: "fix" }, { w: "this." },
-  { w: "It", g: true }, { w: "exposes", g: true }, { w: "it.", g: true, br: 2 },
-
-  { w: "Forge" }, { w: "is" }, { w: "for" }, { w: "the" }, { w: "founders" }, { w: "who" },
-  { w: "build", g: true }, { w: "right", g: true }, { w: "—", g: true }, { w: "from", g: true }, { w: "the", g: true }, { w: "start.", g: true },
+  { w: "It", g: true }, { w: "exposes", g: true }, { w: "it.", g: true },
 ];
 
 export default function HardTruth() {
@@ -52,25 +48,23 @@ export default function HardTruth() {
 
   useEffect(() => {
     if (!started || done) return;
-    const t = tokens[n];
-    // Pause a little longer at paragraph breaks
-    const delay = t?.br ? 260 : 60;
+    const delay = tokens[n]?.br ? 220 : 55;
     const id = setTimeout(() => setN((v) => v + 1), delay);
     return () => clearTimeout(id);
   }, [started, n, done]);
 
   return (
-    <section ref={ref} className="bg-[#161616] px-6 md:px-16 py-28 md:py-40">
-      <div className="max-w-5xl mx-auto">
+    <section ref={ref} className="bg-black px-6 md:px-16 py-20 md:py-28">
+      <div className="max-w-4xl mx-auto">
         <SectionLabel>The Hard Truth</SectionLabel>
 
         <p
           className="mt-6"
           style={{
-            fontSize: "clamp(26px, 3.8vw, 50px)",
-            lineHeight: 1.32,
-            fontWeight: 500,
-            letterSpacing: "-0.015em",
+            fontSize: "clamp(20px, 2.6vw, 34px)",
+            lineHeight: 1.45,
+            fontWeight: 400,
+            letterSpacing: "-0.01em",
           }}
         >
           {tokens.map((t, i) => {
@@ -79,8 +73,9 @@ export default function HardTruth() {
               <span key={i}>
                 <span
                   style={{
-                    color: shown ? (t.g ? "#B69556" : "#fff") : "transparent",
-                    transition: "color 200ms ease",
+                    color: shown ? (t.g ? "#B69556" : "#fff") : "rgba(255,255,255,0.12)",
+                    filter: shown ? "blur(0px)" : "blur(4px)",
+                    transition: "color 360ms ease, filter 360ms ease",
                   }}
                 >
                   {t.w}
@@ -89,20 +84,27 @@ export default function HardTruth() {
               </span>
             );
           })}
-          {/* Typewriter caret */}
-          {!done && (
-            <span
-              className="caret-blink"
-              style={{
-                display: "inline-block",
-                width: "3px",
-                height: "0.95em",
-                background: "#B69556",
-                transform: "translateY(0.12em)",
-              }}
-            />
-          )}
         </p>
+
+        {/* Question card — glitch border */}
+        <div className="mt-14 md:mt-16">
+          <div
+            className="glitch-border rounded-2xl border border-white/10 bg-[#0c0c0c] px-8 py-10 md:px-12 md:py-14"
+            style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
+          >
+            <p className="text-[#B69556] text-[11px] font-semibold uppercase tracking-[0.25em] mb-4">
+              The Real Question
+            </p>
+            <h3
+              className="text-white tracking-tight leading-[1.05]"
+              style={{ fontSize: "clamp(28px, 4vw, 56px)", fontWeight: 500 }}
+            >
+              Built to Be{" "}
+              <span className="text-white/30">Broken.</span>{" "}
+              Or Built to Scale?
+            </h3>
+          </div>
+        </div>
       </div>
     </section>
   );

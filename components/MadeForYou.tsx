@@ -73,7 +73,7 @@ export default function MadeForYou() {
               href="https://tally.so/r/ZjDaXA"
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-10 inline-flex items-center gap-3 bg-[#B69556] hover:bg-[#c9a96a] text-black px-7 h-14 rounded-xl hover:rounded-[28px] transition-all duration-300 font-semibold text-sm uppercase tracking-widest"
+              className="glitch-border group mt-10 inline-flex items-center gap-3 bg-[#B69556] hover:bg-[#c9a96a] text-black px-7 h-14 rounded-xl transition-colors duration-200 font-semibold text-sm uppercase tracking-widest"
             >
               Request an Invite
               <span className="group-hover:translate-x-1 transition-transform duration-150">→</span>
