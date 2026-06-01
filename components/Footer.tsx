@@ -16,11 +16,10 @@ export default function Footer() {
         {/* Nav links — mono uppercase */}
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mb-10">
           {[
-            { label: "Speakers", href: "#speakers" },
             { label: "Who Should Attend", href: "#who" },
             { label: "Schedule", href: "#agenda" },
             { label: "FAQ", href: "#faq" },
-            { label: "Apply for Invite", href: "https://tally.so/r/ZjDaXA", external: true },
+            { label: "Request an Invite", href: "https://tally.so/r/ZjDaXA", external: true },
           ].map((link) => (
             <a
               key={link.label}
@@ -28,7 +27,7 @@ export default function Footer() {
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
               className="text-white/35 hover:text-white transition-colors duration-150 text-[11px] uppercase tracking-widest font-medium"
-              style={{ fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace" }}
+              style={{ fontFamily: "var(--font-body)" }}
             >
               {link.label}
             </a>
@@ -42,7 +41,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-4">
           <p
             className="text-white/20 text-[11px] uppercase tracking-widest"
-            style={{ fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace" }}
+            style={{ fontFamily: "var(--font-body)" }}
           >
             &copy; 2026 ForFond. All rights reserved.
           </p>

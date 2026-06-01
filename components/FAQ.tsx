@@ -46,10 +46,7 @@ export default function FAQ() {
           {/* ── Left — sticky FAQ label ── */}
           <div className="md:w-[38%] md:sticky md:top-24 md:self-start mb-12 md:mb-0 md:pr-16">
             <SectionLabel>Questions</SectionLabel>
-            <h2
-              className="font-bold text-white leading-[0.9] tracking-tight"
-              style={{ fontSize: "clamp(64px, 10vw, 120px)" }}
-            >
+            <h2 className="section-h">
               FAQ
             </h2>
             <p className="text-white/30 text-sm font-light leading-relaxed mt-6 max-w-[220px]">

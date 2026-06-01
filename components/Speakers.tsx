@@ -64,7 +64,7 @@ export default function Speakers() {
               style={{
                 fontSize: "clamp(36px, 5vw, 64px)",
                 fontFamily:
-                  "ui-monospace, SFMono-Regular, 'SF Mono', 'SF Pro Display', Menlo, monospace",
+                  "var(--font-body)",
               }}
             >
               Expert
@@ -100,7 +100,7 @@ export default function Speakers() {
                     }`}
                     style={{
                       fontFamily:
-                        "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace",
+                        "var(--font-body)",
                     }}
                   >
                     {s.name}
@@ -111,7 +111,7 @@ export default function Speakers() {
                     }`}
                     style={{
                       fontFamily:
-                        "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace",
+                        "var(--font-body)",
                     }}
                   >
                     {s.title}
@@ -160,7 +160,7 @@ export default function Speakers() {
                     className="text-white text-xs uppercase tracking-widest font-semibold"
                     style={{
                       fontFamily:
-                        "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace",
+                        "var(--font-body)",
                     }}
                   >
                     {s.name}
@@ -169,7 +169,7 @@ export default function Speakers() {
                     className="text-[#B69556] text-[10px] uppercase tracking-widest mt-1"
                     style={{
                       fontFamily:
-                        "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace",
+                        "var(--font-body)",
                     }}
                   >
                     {s.title}

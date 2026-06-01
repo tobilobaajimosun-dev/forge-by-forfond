@@ -69,7 +69,7 @@ export default function SiteHeader() {
             <span className="hidden sm:inline text-black/40">|</span>
             <span
               className="text-[11px] font-bold tabular-nums tracking-wider"
-              style={{ fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace" }}
+              style={{ fontFamily: "var(--font-body)" }}
             >
               {pad(time.days)}d : {pad(time.hours)}h : {pad(time.minutes)}m : {pad(time.seconds)}s
             </span>
@@ -90,8 +90,8 @@ export default function SiteHeader() {
         }}
       >
         <nav className="relative border-b border-white/[0.08]">
-          <div className="absolute inset-0 bg-[#000000]/70 backdrop-blur-xl" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-xl backdrop-saturate-150" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
 
           <div className="relative max-w-6xl mx-auto px-6 md:px-16 h-16 flex items-center">
 

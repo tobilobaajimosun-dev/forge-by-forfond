@@ -83,10 +83,7 @@ export default function Schedule() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-0">
           <div>
             <SectionLabel dark>June 13, 2026</SectionLabel>
-            <h2
-              className="font-bold text-[#1a1a1a] leading-[0.92] tracking-tight"
-              style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
-            >
+            <h2 className="section-h" style={{ color: "#1a1a1a" }}>
               Full Schedule
             </h2>
           </div>
@@ -117,13 +114,13 @@ export default function Schedule() {
               <div className="shrink-0">
                 <p
                   className="text-[#8a6d33] text-xs font-semibold"
-                  style={{ fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace" }}
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   {s.time}
                 </p>
                 <p
                   className="text-black/30 text-[10px] mt-0.5"
-                  style={{ fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace" }}
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   – {s.end}
                 </p>

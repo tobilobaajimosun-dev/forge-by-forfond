@@ -19,8 +19,6 @@ function getTimeLeft() {
   };
 }
 
-const MONO = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace";
-
 export default function HeroText() {
   const [time, setTime] = useState(getTimeLeft());
   useEffect(() => {
@@ -31,39 +29,51 @@ export default function HeroText() {
   return (
     <section className="relative bg-black min-h-screen overflow-hidden">
 
-      {/* ── Raycast-style pattern (black + gold) ── */}
-      {/* Soft diagonal gold bands */}
+      {/* ── Animated Raycast-style pattern ── */}
+      {/* Drifting diagonal gold bands */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hero-bands absolute inset-[-20%] pointer-events-none"
         aria-hidden
         style={{
           background:
-            "repeating-linear-gradient(115deg, rgba(182,149,86,0.10) 0px, rgba(182,149,86,0.10) 2px, transparent 2px, transparent 130px)",
-          filter: "blur(0.5px)",
+            "repeating-linear-gradient(125deg, rgba(182,149,86,0.12) 0px, rgba(182,149,86,0.12) 3px, transparent 3px, transparent 140px)",
+          filter: "blur(0.4px)",
         }}
       />
-      {/* Large soft gold glows (mesh) */}
+      {/* Moving light sweep across the bands */}
       <div
-        className="absolute pointer-events-none"
+        className="hero-sweep absolute pointer-events-none"
+        aria-hidden
+        style={{
+          top: "-30%", left: 0, width: "55%", height: "160%",
+          background:
+            "linear-gradient(125deg, transparent, rgba(255,240,210,0.16) 45%, rgba(182,149,86,0.22) 55%, transparent)",
+          filter: "blur(40px)",
+          mixBlendMode: "screen",
+        }}
+      />
+      {/* Pulsing mesh glows */}
+      <div
+        className="hero-glow absolute pointer-events-none"
         aria-hidden
         style={{
           top: "-15%", right: "-5%", width: "60vw", height: "60vw",
-          background: "radial-gradient(circle, rgba(182,149,86,0.18) 0%, transparent 60%)",
-          filter: "blur(40px)",
+          background: "radial-gradient(circle, rgba(182,149,86,0.20) 0%, transparent 60%)",
+          filter: "blur(50px)",
         }}
       />
       <div
-        className="absolute pointer-events-none"
+        className="hero-glow absolute pointer-events-none"
         aria-hidden
         style={{
           bottom: "-20%", left: "-10%", width: "55vw", height: "55vw",
-          background: "radial-gradient(circle, rgba(182,149,86,0.10) 0%, transparent 60%)",
-          filter: "blur(50px)",
+          background: "radial-gradient(circle, rgba(120,150,200,0.10) 0%, transparent 60%)",
+          filter: "blur(60px)", animationDelay: "2s",
         }}
       />
       {/* Fine grid */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        className="absolute inset-0 pointer-events-none opacity-[0.05]"
         aria-hidden
         style={{
           backgroundImage:
@@ -71,33 +81,32 @@ export default function HeroText() {
           backgroundSize: "64px 64px",
         }}
       />
+      {/* Grain / noise texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"
+        aria-hidden
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
+      />
 
-      {/* ── Readability brush: darken top (nav) and bottom (text) ── */}
+      {/* ── Readability brush ── */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 22%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.65) 82%, rgba(0,0,0,0.92) 100%)",
-        }}
-      />
-      {/* Soft brushed glow behind the bottom-left text block */}
-      <div
-        className="absolute pointer-events-none"
-        aria-hidden
-        style={{
-          left: "-10%", bottom: "-5%", width: "70vw", height: "50vh",
-          background: "radial-gradient(ellipse at 30% 70%, rgba(0,0,0,0.85) 0%, transparent 60%)",
-          filter: "blur(30px)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.20) 24%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.60) 80%, rgba(0,0,0,0.92) 100%)",
         }}
       />
 
       {/* ── Foreground content ── */}
       <div className="relative z-10 min-h-screen flex flex-col justify-end pb-12 md:pb-16">
-        <div className="max-w-6xl mx-auto w-full px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 items-end gap-10">
+        <div className="max-w-6xl mx-auto w-full px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 items-start gap-10">
 
-          {/* Bottom-left — wordmark + meta */}
-          <div>
+          {/* Left — wordmark + meta */}
+          <div className="hero-in" style={{ animationDelay: "120ms" }}>
             <h1
               className="text-white leading-[0.9] mb-4"
               style={{
@@ -110,8 +119,8 @@ export default function HeroText() {
               Forge&rsquo;26
             </h1>
 
-            <div className="flex gap-10" style={{ fontFamily: MONO }}>
-              <div className="text-[11px] md:text-xs uppercase tracking-widest leading-relaxed">
+            <div className="flex gap-10">
+              <div className="text-[11px] md:text-xs uppercase tracking-widest leading-relaxed tabular-nums">
                 <p className="text-white">Lagos</p>
                 <p className="text-white/55">Nigeria</p>
               </div>
@@ -124,12 +133,9 @@ export default function HeroText() {
             </div>
           </div>
 
-          {/* Bottom-right — supporting line ABOVE the CTA */}
-          <div className="flex flex-col items-start md:items-end gap-5">
-            <p
-              className="text-white text-lg md:text-xl font-light leading-snug max-w-sm md:text-right"
-              style={{ color: "#FFFFFF" }}
-            >
+          {/* Right — supporting line above CTA (top-aligned with the wordmark) */}
+          <div className="hero-in flex flex-col items-start md:items-end gap-5" style={{ animationDelay: "260ms" }}>
+            <p className="text-white text-base md:text-lg font-light leading-snug max-w-sm md:text-right">
               The room where growth &amp; scale-oriented founders build what lasts.
             </p>
             <a
@@ -144,7 +150,6 @@ export default function HeroText() {
             <a
               href="#agenda"
               className="text-white/50 hover:text-white text-[11px] uppercase tracking-widest transition-colors duration-150"
-              style={{ fontFamily: MONO }}
             >
               Or view the schedule
             </a>

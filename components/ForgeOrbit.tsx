@@ -56,10 +56,7 @@ export default function ForgeOrbit() {
           <div className="flex justify-center mb-4">
             <SectionLabel>The Room</SectionLabel>
           </div>
-          <h2
-            className="font-bold text-white leading-[0.95] tracking-tight"
-            style={{ fontSize: "clamp(36px, 5vw, 64px)" }}
-          >
+          <h2 className="section-h">
             Built Around the Right Expertise
           </h2>
           <p className="text-white/35 text-sm font-light mt-4 max-w-md mx-auto leading-relaxed">
@@ -154,11 +151,10 @@ export default function ForgeOrbit() {
             />
             {/* Logo card */}
             <div
-              className="relative border border-[#B69556]/30 bg-[#1a1a1a] flex flex-col items-center justify-center"
-              style={{ width: "96px", height: "96px", borderRadius: "18px", boxShadow: "0 0 40px rgba(182,149,86,0.12)" }}
+              className="relative border border-[#B69556]/30 bg-[#111111] flex items-center justify-center"
+              style={{ width: "104px", height: "104px", borderRadius: "20px", boxShadow: "0 0 40px rgba(182,149,86,0.14)" }}
             >
-              <span className="text-white font-bold text-lg leading-none tracking-tight">F</span>
-              <span className="text-[#B69556] text-[8px] font-semibold uppercase tracking-widest mt-1">Forge</span>
+              <img src="/forge-mark.png" alt="Forge" className="w-14 h-auto object-contain" draggable={false} />
             </div>
           </div>
 

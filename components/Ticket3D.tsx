@@ -151,8 +151,8 @@ export default function Ticket3D() {
             border: "1px solid rgba(182,149,86,0.45)",
           }}
         >
-          <span className="text-black/80 text-base font-bold uppercase tracking-[0.35em]">ForFond</span>
-          <span className="text-black/50 text-[9px] uppercase tracking-[0.25em] font-mono">Built to Scale</span>
+          <img src="/forge-mark.png" alt="Forge" className="w-28 h-auto object-contain mb-1" draggable={false} />
+          <span className="text-black/70 text-[9px] uppercase tracking-[0.3em]">Built to Scale</span>
         </div>
       </div>
 

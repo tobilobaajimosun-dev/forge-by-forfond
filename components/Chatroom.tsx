@@ -95,10 +95,7 @@ export default function Chatroom() {
         <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
 
           {/* Headline — each line has gold highlighter underneath */}
-          <h2
-            className="font-bold text-white leading-[1.05] tracking-tight shrink-0"
-            style={{ fontSize: "clamp(36px, 5.5vw, 68px)" }}
-          >
+          <h2 className="section-h shrink-0" style={{ lineHeight: 1.08 }}>
             <Highlight>Your Questions.</Highlight>
             <br />
             <Highlight>One Expert.</Highlight>

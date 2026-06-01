@@ -39,10 +39,7 @@ export default function MadeForYou() {
           {/* Left — text list */}
           <div>
             <SectionLabel>Who This Is For</SectionLabel>
-            <h2
-              className="font-semibold text-white leading-[1.02] tracking-tight mb-10 max-w-xl"
-              style={{ fontSize: "clamp(34px, 4.5vw, 60px)" }}
-            >
+            <h2 className="section-h mb-10 max-w-xl">
               You&rsquo;re ambitious &mdash; and you know it&rsquo;s time.
             </h2>
 

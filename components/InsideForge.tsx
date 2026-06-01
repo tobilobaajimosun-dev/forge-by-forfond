@@ -36,10 +36,7 @@ export default function InsideForge() {
         <div className="mb-16 md:mb-24">
           <SectionLabel>Inside Forge&rsquo;26</SectionLabel>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2
-              className="font-semibold text-white leading-[0.98] tracking-tight"
-              style={{ fontSize: "clamp(38px, 5.5vw, 72px)" }}
-            >
+            <h2 className="section-h">
               What you&rsquo;ll
               <br />
               walk away with
