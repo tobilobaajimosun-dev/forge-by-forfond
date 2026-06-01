@@ -1,43 +1,43 @@
 @import "tailwindcss";
 
-/*
-  Neue Montreal — drop your font files in /public/fonts/ and uncomment
-  the block below to activate. It will override Hanken Grotesk automatically.
-
+/* ── Neue Haas Grotesk Display (self-hosted, licensed) ── */
 @font-face {
-  font-family: "NeueMontreal";
-  src: url("/fonts/NeueMontreal-Regular.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/NeueHaasDisplay-Thin.woff2") format("woff2");
+  font-weight: 100 200;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "NeueMontreal";
-  src: url("/fonts/NeueMontreal-Medium.woff2") format("woff2");
-  font-weight: 500;
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/NeueHaasDisplay-Light.woff2") format("woff2");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "NeueMontreal";
-  src: url("/fonts/NeueMontreal-Bold.woff2") format("woff2");
-  font-weight: 700;
+  /* Roman covers 400–600 so medium/semibold render at the clean regular weight */
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/NeueHaasDisplay-Roman.woff2") format("woff2");
+  font-weight: 400 600;
   font-style: normal;
   font-display: swap;
 }
-*/
+@font-face {
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/NeueHaasDisplay-Bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --background: #272727;
   --foreground: #ffffff;
   --gold: #B69556;
 
-  /*
-    Display font: Hanken Grotesk via next/font (--font-display).
-    Drop-in for Neue Montreal: add files to /public/fonts/ and uncomment
-    the @font-face block above; "NeueMontreal" then wins the stack.
-  */
-  --font-heading: "NeueMontreal", var(--font-display), -apple-system,
+  /* Display font: self-hosted Neue Haas Grotesk Display, Hanken Grotesk fallback */
+  --font-heading: "NeueHaasDisplay", var(--font-display), -apple-system,
     "Helvetica Neue", Arial, sans-serif;
   /* Body font: Geist via next/font (--font-body set by next/font) */
   --font-text: var(--font-body), -apple-system, "Helvetica Neue", Arial, sans-serif;
