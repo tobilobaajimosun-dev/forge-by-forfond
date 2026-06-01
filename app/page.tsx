@@ -1,8 +1,6 @@
 import ScrollToTop from "@/components/ScrollToTop";
 import SiteHeader from "@/components/SiteHeader";
 import HeroText from "@/components/Hero";
-import ApplyInvite from "@/components/ApplyInvite";
-import Countdown from "@/components/Countdown";
 import HardTruth from "@/components/HardTruth";
 import InsideForge from "@/components/InsideForge";
 import Chatroom from "@/components/Chatroom";
@@ -21,20 +19,10 @@ export default function Home() {
 
       <div id="top" />
 
-      {/* 1. Hook — the headline question */}
-      <ScrollReveal>
-        <HeroText />
-      </ScrollReveal>
+      {/* 1. Hero — cursor-spotlit mark + countdown + CTA */}
+      <HeroText />
 
-      {/* 2. Immediate CTA — request an invite */}
-      <ApplyInvite />
-
-      {/* 3. Urgency — save the date countdown */}
-      <ScrollReveal delay={60}>
-        <Countdown />
-      </ScrollReveal>
-
-      {/* 4. The problem — why this matters */}
+      {/* 2. The problem — why this matters */}
       <ScrollReveal delay={60}>
         <HardTruth />
       </ScrollReveal>

@@ -29,7 +29,7 @@ export default function InsideForge() {
     <section
       id="inside"
       className="px-6 md:px-16 pt-24 md:pt-36 pb-24 md:pb-32"
-      style={{ background: "linear-gradient(to bottom, #1a1a1a 0%, #272727 140px)" }}
+      style={{ background: "linear-gradient(to bottom, #1a1a1a 0%, #000000 140px)" }}
     >
       <div className="max-w-6xl mx-auto">
 

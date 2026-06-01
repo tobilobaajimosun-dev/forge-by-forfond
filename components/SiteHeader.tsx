@@ -90,7 +90,7 @@ export default function SiteHeader() {
         }}
       >
         <nav className="relative border-b border-white/[0.08]">
-          <div className="absolute inset-0 bg-[#272727]/70 backdrop-blur-xl" />
+          <div className="absolute inset-0 bg-[#000000]/70 backdrop-blur-xl" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
 
           <div className="relative max-w-6xl mx-auto px-6 md:px-16 h-16 flex items-center">
@@ -101,27 +101,13 @@ export default function SiteHeader() {
               <a href="#agenda" className="hover:text-white transition-colors duration-150">Schedule</a>
             </div>
 
-            {/* Center logo */}
+            {/* Center logo — swoosh mark */}
             <a href="#top" className="absolute left-1/2 -translate-x-1/2 flex items-center">
-              {/* Brand asset at public/forge-logo.svg */}
               <img
-                src="/forge-logo.svg"
-                alt="Forge by ForFond"
-                className="h-5 md:h-6 w-auto object-contain"
-                onError={(e) => {
-                  // Fallback to wordmark if the asset isn't present yet
-                  const el = e.currentTarget;
-                  el.style.display = "none";
-                  const sib = el.nextElementSibling as HTMLElement | null;
-                  if (sib) sib.style.display = "inline";
-                }}
+                src="/forge-mark.png"
+                alt="Forge"
+                className="h-9 md:h-11 w-auto object-contain"
               />
-              <span
-                className="text-white font-bold text-sm tracking-tight uppercase whitespace-nowrap"
-                style={{ display: "none" }}
-              >
-                Forge <span className="text-[#B69556]">/</span> ForFond
-              </span>
             </a>
 
             {/* Right nav */}
