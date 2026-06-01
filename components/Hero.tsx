@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const EVENT_DATE = new Date("2026-06-13T09:00:00+01:00");
 const REGISTER = "https://tally.so/r/ZjDaXA";
@@ -21,13 +21,47 @@ function getTimeLeft() {
 
 export default function HeroText() {
   const [time, setTime] = useState(getTimeLeft());
+  const sectionRef = useRef<HTMLElement>(null);
+  const iconRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const id = setInterval(() => setTime(getTimeLeft()), 1000);
     return () => clearInterval(id);
   }, []);
 
+  // Cursor-driven 3D tilt on the swoosh icon
+  useEffect(() => {
+    const sec = sectionRef.current;
+    const icon = iconRef.current;
+    if (!sec || !icon) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let rx = 0, ry = 0, trx = 0, try_ = 0, raf = 0;
+    const onMove = (e: PointerEvent) => {
+      const r = sec.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      try_ = px * 26;
+      trx = -py * 20;
+    };
+    const onLeave = () => { trx = 0; try_ = 0; };
+    const tick = () => {
+      rx += (trx - rx) * 0.07;
+      ry += (try_ - ry) * 0.07;
+      icon.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+      raf = requestAnimationFrame(tick);
+    };
+    sec.addEventListener("pointermove", onMove);
+    sec.addEventListener("pointerleave", onLeave);
+    raf = requestAnimationFrame(tick);
+    return () => {
+      sec.removeEventListener("pointermove", onMove);
+      sec.removeEventListener("pointerleave", onLeave);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <section className="relative bg-black min-h-screen overflow-hidden">
+    <section ref={sectionRef} className="relative bg-black min-h-screen overflow-hidden">
 
       {/* ── Animated Raycast-style pattern ── */}
       {/* Drifting diagonal gold bands */}
@@ -82,22 +116,62 @@ export default function HeroText() {
         }}
       />
 
-      {/* Event logo icon — glowing swoosh centerpiece */}
+      {/* Event logo icon — big textured 3D-tilt swoosh centerpiece */}
       <div
-        className="absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        style={{ perspective: "1100px" }}
         aria-hidden
       >
+        {/* Gold glow halo */}
         <div className="hero-glow absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{ width: "520px", height: "520px", maxWidth: "85vw", maxHeight: "85vw",
-            background: "radial-gradient(circle, rgba(182,149,86,0.22) 0%, transparent 60%)", filter: "blur(30px)" }}
+          style={{ width: "640px", height: "640px", maxWidth: "92vw", maxHeight: "92vw",
+            background: "radial-gradient(circle, rgba(182,149,86,0.26) 0%, transparent 60%)", filter: "blur(34px)" }}
         />
-        <img
-          src="/forge-mark.png"
-          alt="Forge"
-          className="ticket-float relative w-[clamp(220px,42vw,460px)] h-auto"
-          draggable={false}
-          style={{ filter: "drop-shadow(0 30px 70px rgba(182,149,86,0.30))" }}
-        />
+        {/* Tilting 3D stack */}
+        <div
+          ref={iconRef}
+          className="ticket-float relative"
+          style={{ width: "clamp(280px, 50vw, 600px)", transformStyle: "preserve-3d", willChange: "transform" }}
+        >
+          {/* Depth shadow copy (behind) */}
+          <img
+            src="/forge-mark.png" alt="" draggable={false}
+            className="absolute inset-0 w-full h-auto"
+            style={{ transform: "translateZ(-30px) translateY(14px)", filter: "brightness(0) blur(14px)", opacity: 0.55 }}
+          />
+          {/* Base mark */}
+          <img
+            src="/forge-mark.png" alt="Forge" draggable={false}
+            className="relative w-full h-auto"
+            style={{ filter: "drop-shadow(0 40px 80px rgba(182,149,86,0.35)) drop-shadow(0 10px 24px rgba(0,0,0,0.6))" }}
+          />
+          {/* Metallic texture masked to the swoosh shape */}
+          <div
+            className="absolute inset-0 mix-blend-overlay"
+            style={{
+              background:
+                "linear-gradient(125deg, rgba(255,255,255,0.5) 0%, transparent 30%, rgba(0,0,0,0.4) 55%, transparent 75%, rgba(255,240,210,0.4) 100%)",
+              WebkitMaskImage: "url(/forge-mark.png)",
+              maskImage: "url(/forge-mark.png)",
+              WebkitMaskSize: "contain", maskSize: "contain",
+              WebkitMaskRepeat: "no-repeat", maskRepeat: "no-repeat",
+              WebkitMaskPosition: "center", maskPosition: "center",
+            }}
+          />
+          {/* Grain texture masked to the swoosh */}
+          <div
+            className="absolute inset-0 opacity-30 mix-blend-overlay"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+              WebkitMaskImage: "url(/forge-mark.png)",
+              maskImage: "url(/forge-mark.png)",
+              WebkitMaskSize: "contain", maskSize: "contain",
+              WebkitMaskRepeat: "no-repeat", maskRepeat: "no-repeat",
+              WebkitMaskPosition: "center", maskPosition: "center",
+            }}
+          />
+        </div>
       </div>
       {/* Grain / noise texture */}
       <div

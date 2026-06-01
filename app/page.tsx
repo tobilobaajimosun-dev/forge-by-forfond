@@ -19,45 +19,45 @@ export default function Home() {
 
       <div id="top" />
 
-      {/* 1. Hero — cursor-spotlit mark + countdown + CTA */}
+      {/* 1. HOOK — Attention: hero + countdown + CTA */}
       <HeroText />
 
-      {/* 2. The problem — why this matters */}
+      {/* 2. PROBLEM — agitate the pain, raise the stakes */}
       <ScrollReveal delay={60}>
         <HardTruth />
       </ScrollReveal>
 
-      {/* 5. The value — the 3 sessions (stacking cards) */}
+      {/* 3. SOLUTION — what you'll walk away with (the value) */}
       <ScrollReveal delay={60}>
         <InsideForge />
       </ScrollReveal>
 
-      {/* 7. The differentiator — private consultations */}
+      {/* 4. DIFFERENTIATOR — the unmissable private consultations */}
       <ScrollReveal delay={60}>
         <Chatroom />
       </ScrollReveal>
 
-      {/* 8. The breadth — expertise in the room */}
+      {/* 5. CREDIBILITY — the depth of expertise in the room */}
       <ScrollReveal delay={60}>
         <ForgeOrbit />
       </ScrollReveal>
 
-      {/* 9. Qualification — who this is for */}
-      <ScrollReveal delay={60}>
-        <MadeForYou />
-      </ScrollReveal>
-
-      {/* 10. Logistics — full schedule (light section) */}
+      {/* 6. PROOF — the full programme; it's a real, substantial day */}
       <ScrollReveal delay={60}>
         <Schedule />
       </ScrollReveal>
 
-      {/* 11. Objections — FAQ */}
+      {/* 7. QUALIFY + CONVERT — "this is you" + ticket + CTA */}
+      <ScrollReveal delay={60}>
+        <MadeForYou />
+      </ScrollReveal>
+
+      {/* 8. OBJECTIONS — FAQ (and it's free) */}
       <ScrollReveal id="faq" delay={60}>
         <FAQ />
       </ScrollReveal>
 
-      {/* 12. Close */}
+      {/* 9. CLOSE — final CTA + ForFond Group */}
       <ScrollReveal delay={40}>
         <Footer />
       </ScrollReveal>

@@ -122,7 +122,6 @@ export default function Ticket3D() {
           </div>
 
           <div className="px-6 mt-auto mb-7">
-            <img src="/forge-mark.png" loading="lazy" alt="" aria-hidden className="w-12 h-auto mb-3 opacity-90" draggable={false} />
             <p
               className="leading-none mb-2"
               style={{ fontFamily: "var(--font-geist-pixel-circle)", fontSize: "40px", fontWeight: 500, letterSpacing: "-0.06em", color: "#16202e" }}
@@ -148,14 +147,32 @@ export default function Ticket3D() {
           </div>
         </div>
 
-        {/* BACK — forge logo */}
+        {/* BACK — black + gold ForFond invite, with the forge logo */}
         <div
-          className="absolute inset-0 overflow-hidden flex flex-col items-center justify-center gap-4"
-          style={{ ...faceBase, transform: "rotateY(180deg)" }}
+          className="absolute inset-0 overflow-hidden flex flex-col items-center justify-center gap-5"
+          style={{
+            backfaceVisibility: "hidden",
+            borderRadius: "22px",
+            transform: "rotateY(180deg)",
+            background: "radial-gradient(120% 100% at 50% 0%, #2a2a2a 0%, #111111 55%, #000000 100%)",
+            boxShadow: "0 50px 90px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)",
+          }}
         >
-          <div className="absolute inset-0 opacity-[0.06] mix-blend-multiply pointer-events-none" style={{ backgroundImage: grain }} aria-hidden />
+          {/* gold edges */}
+          <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: "linear-gradient(90deg, #8a6d33, #e7d3a3, #8a6d33)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-1.5" style={{ background: "linear-gradient(90deg, #8a6d33, #e7d3a3, #8a6d33)" }} />
+          <div className="absolute inset-0 opacity-[0.05] mix-blend-screen pointer-events-none" style={{ backgroundImage: grain }} aria-hidden />
+
           <img src="/forge-mark.png" loading="lazy" alt="Forge" className="w-32 h-auto object-contain" draggable={false} />
-          <span className="text-black/45 text-[9px] uppercase tracking-[0.35em]">Built to Scale</span>
+          <div className="text-center">
+            <p
+              className="leading-none"
+              style={{ fontFamily: "var(--font-geist-pixel-circle)", fontSize: "22px", fontWeight: 500, letterSpacing: "-0.04em", color: "#B69556" }}
+            >
+              ForFond Invite
+            </p>
+            <p className="text-white/40 text-[9px] uppercase tracking-[0.35em] mt-2">Built to Scale</p>
+          </div>
         </div>
       </div>
     </div>
