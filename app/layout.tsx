@@ -24,10 +24,36 @@ const geist = Geist({
   display: "swap",
 });
 
+const SITE_URL = "https://forge.forfond.africa";
+const TITLE = "Forge'26 — Built to Scale | June 13, 2026, Lagos";
+const DESCRIPTION =
+  "The room where growth & scale-oriented founders build what lasts. A curated one-day experience — growth, governance, finance, and private expert consultations. June 13, 2026, Lagos, Nigeria.";
+
 export const metadata: Metadata = {
-  title: "Forge by ForFond — June 13, 2026",
-  description:
-    "A curated one-day experience for founders ready to build systems that survive the scale. Governance, operations, personal finance, and funding readiness.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Forge by ForFond",
+    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Forge'26 — Built to Scale. June 13, 2026, Lagos, Nigeria.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
