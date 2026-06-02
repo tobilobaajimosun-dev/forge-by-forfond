@@ -10,19 +10,21 @@ export default function ScrollToTop() {
     const toTop = () => {
       if (!window.location.hash) window.scrollTo(0, 0);
     };
+    // Force top across the load lifecycle (covers slow mobile hydration)
     toTop();
+    requestAnimationFrame(toTop);
+    window.addEventListener("load", toTop);
 
-    // Mobile / bfcache: when the page is restored from the back-forward cache,
-    // force it back to the top and reload so entrance animations replay.
+    // Returning via the back-forward cache (mobile): snap back to top, no reload
     const onPageShow = (e: PageTransitionEvent) => {
-      if (e.persisted) {
-        window.scrollTo(0, 0);
-        // Re-run animations by reloading the persisted page
-        window.location.reload();
-      }
+      if (e.persisted && !window.location.hash) window.scrollTo(0, 0);
     };
     window.addEventListener("pageshow", onPageShow);
-    return () => window.removeEventListener("pageshow", onPageShow);
+
+    return () => {
+      window.removeEventListener("load", toTop);
+      window.removeEventListener("pageshow", onPageShow);
+    };
   }, []);
 
   return null;

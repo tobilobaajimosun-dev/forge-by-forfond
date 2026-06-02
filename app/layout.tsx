@@ -37,6 +37,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased ${display.variable} ${geist.variable} ${GeistPixelCircle.variable}`}>
+      <head>
+        {/* Force top on every load BEFORE paint — prevents mobile scroll restoration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if('scrollRestoration' in history){history.scrollRestoration='manual';}if(!location.hash){window.scrollTo(0,0);}",
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

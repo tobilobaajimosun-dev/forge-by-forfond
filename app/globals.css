@@ -53,6 +53,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Prevent the browser from auto-shifting scroll when content above resizes */
+html, body {
+  overflow-anchor: none;
+}
+
 /* Prevent horizontal scrollbar while sections slide in from the left */
 body {
   overflow-x: hidden;
